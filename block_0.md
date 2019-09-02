@@ -104,14 +104,16 @@
 
 |name|bit_assignments|type|initial_value|comment|
 |:--|:--|:--|:--|:--|
-|bit_field_0|[3:0]|rwc|0x0||
-|bit_field_1|[7:4]|rwc|0x0||
-|bit_field_2|[9:8]|rwe|0x0||
-|bit_field_3|[11:10]|rwe|0x0||
-|bit_field_4|[13:12]|rwe|0x0||
-|bit_field_5|[17:16]|rwl|0x0||
-|bit_field_6|[19:18]|rwl|0x0||
-|bit_field_7|[21:20]|rwl|0x0||
+|bit_field_0|[1:0]|rwc|0x0||
+|bit_field_1|[3:2]|rwc|0x0||
+|bit_field_2|[5:4]|rws|0x0||
+|bit_field_3|[7:6]|rws|0x0||
+|bit_field_4|[9:8]|rwe|0x0||
+|bit_field_5|[11:10]|rwe|0x0||
+|bit_field_6|[13:12]|rwe|0x0||
+|bit_field_7|[17:16]|rwl|0x0||
+|bit_field_8|[19:18]|rwl|0x0||
+|bit_field_9|[21:20]|rwl|0x0||
 
 ### <div id="block_0-register_6"></div>register_6
 
