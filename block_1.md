@@ -18,11 +18,13 @@
     * 0x00 - 0x3f
 * array_size
     * [2, 4]
+* type
+    * default
 
-|name|bit_assignments|type|initial_value|comment|
-|:--|:--|:--|:--|:--|
-|bit_field_0|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|rw|0x00||
-|bit_field_1|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|ro|||
+|name|bit_assignments|type|initial_value|reference|comment|
+|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|rw|0x00|||
+|bit_field_1|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|ro||register_1.bit_field_1||
 
 ### <div id="block_1-register_1"></div>register_1
 
@@ -32,8 +34,10 @@
     * 0x40 - 0x7f
 * array_size
     * [2, 4]
+* type
+    * default
 
-|name|bit_assignments|type|initial_value|comment|
-|:--|:--|:--|:--|:--|
-|bit_field_0|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|ro|||
-|bit_field_1|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|rw|0x00||
+|name|bit_assignments|type|initial_value|reference|comment|
+|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|ro||register_0.bit_field_0||
+|bit_field_1|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|rw|0x00|||
