@@ -17,7 +17,9 @@
 |[register_7](#block_0-register_7)|0x18 - 0x1b|
 |[register_8](#block_0-register_8)|0x20 - 0x3f|
 |[register_9](#block_0-register_9)|0x40 - 0x47|
-|[register_10](#block_0-register_10)|0x80 - 0xff|
+|[register_10](#block_0-register_10)|0x40 - 0x43|
+|[register_11](#block_0-register_11)|0x44 - 0x47|
+|[register_12](#block_0-register_12)|0x80 - 0xff|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -198,7 +200,6 @@
     * register_0.bit_field_0
     * register_0.bit_field_1
     * register_0.bit_field_2: 0
-    * register_1: 1
 
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
@@ -209,6 +210,40 @@
 
 * name
     * register_10
+* offset_address
+    * 0x40 - 0x43
+* array_size
+    * NA
+* type
+    * indirect
+* index_bit_fields
+    * register_0.bit_field_2: 1
+
+|name|bit_assignments|type|initial_value|reference|comment|
+|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[0]|rw|0x0|||
+
+### <div id="block_0-register_11"></div>register_11
+
+* name
+    * register_11
+* offset_address
+    * 0x44 - 0x47
+* array_size
+    * NA
+* type
+    * indirect
+* index_bit_fields
+    * register_0.bit_field_2: 1
+
+|name|bit_assignments|type|initial_value|reference|comment|
+|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[0]|rw|0x0|||
+
+### <div id="block_0-register_12"></div>register_12
+
+* name
+    * register_12
 * offset_address
     * 0x80 - 0xff
 * array_size

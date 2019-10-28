@@ -95,13 +95,27 @@ register_block {
     name 'register_9'
     offset_address 0x40
     size [2, 4]
-    type [:indirect, 'register_0.bit_field_0', 'register_0.bit_field_1', ['register_0.bit_field_2', 0], ['register_1', 1]]
+    type [:indirect, 'register_0.bit_field_0', 'register_0.bit_field_1', ['register_0.bit_field_2', 0]]
     bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
     bit_field { name 'bit_field_1'; bit_assignment lsb: 8, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
   }
 
   register {
     name 'register_10'
+    offset_address 0x40
+    type [:indirect, ['register_0.bit_field_2', 1]]
+    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+  }
+
+  register {
+    name 'register_11'
+    offset_address 0x44
+    type [:indirect, ['register_0.bit_field_2', 1]]
+    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+  }
+
+  register {
+    name 'register_12'
     offset_address 0x80
     size 32
     type :external
