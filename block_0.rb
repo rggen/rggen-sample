@@ -85,10 +85,12 @@ register_block {
     name 'register_8'
     offset_address 0x20
     size 4
-    # bit assignments: [7:0] [23:16] [39:32] [55:48]
-    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
-    # bit assignments: [15:8] [31:24] [47:40] [63:56]
-    bit_field { name 'bit_field_1'; bit_assignment lsb: 8, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
+    # bit assignments: [ 3:0] [19:16] [35:32] [51:48]
+    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 4, sequence_size: 4, step: 16; type :rw; initial_value 0            }
+    # bit assignments: [ 7:4] [23:20] [39:36] [55:52]
+    bit_field { name 'bit_field_1'; bit_assignment lsb: 4, width: 4, sequence_size: 4, step: 16; type :rw; initial_value default: 0   }
+    # bit assignments: [11:8] [27:24] [43:40] [59:56]
+    bit_field { name 'bit_field_2'; bit_assignment lsb: 8, width: 4, sequence_size: 4, step: 16; type :rw; initial_value [0, 1, 2, 3] }
   }
 
   register {
@@ -96,7 +98,9 @@ register_block {
     offset_address 0x40
     size [2, 4]
     type [:indirect, 'register_0.bit_field_0', 'register_0.bit_field_1', ['register_0.bit_field_2', 0]]
+    # bit assignments: [ 7:0] [23:16] [39:32] [55:48]
     bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
+    # bit assignments: [15:8] [31:24] [47:40] [63:56]
     bit_field { name 'bit_field_1'; bit_assignment lsb: 8, width: 8, sequence_size: 4, step: 16; type :rw; initial_value 0 }
   }
 

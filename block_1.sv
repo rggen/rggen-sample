@@ -51,11 +51,12 @@ module block_1
         if (1) begin : g_bit_field_0
           genvar k;
           for (k = 0;k < 4;++k) begin : g
+            localparam bit [7:0] INITIAL_VALUE = 8'h00;
             rggen_bit_field_if #(8) bit_field_sub_if();
             `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 0+16*k, 8)
             rggen_bit_field_rw #(
               .WIDTH          (8),
-              .INITIAL_VALUE  (8'h00)
+              .INITIAL_VALUE  (INITIAL_VALUE)
             ) u_bit_field (
               .i_clk        (i_clk),
               .i_rst_n      (i_rst_n),
@@ -117,11 +118,12 @@ module block_1
         if (1) begin : g_bit_field_1
           genvar k;
           for (k = 0;k < 4;++k) begin : g
+            localparam bit [7:0] INITIAL_VALUE = 8'h00;
             rggen_bit_field_if #(8) bit_field_sub_if();
             `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 8+16*k, 8)
             rggen_bit_field_rw #(
               .WIDTH          (8),
-              .INITIAL_VALUE  (8'h00)
+              .INITIAL_VALUE  (INITIAL_VALUE)
             ) u_bit_field (
               .i_clk        (i_clk),
               .i_rst_n      (i_rst_n),
