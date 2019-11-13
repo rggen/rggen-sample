@@ -10,6 +10,8 @@
 module block_0
   import rggen_rtl_pkg::*;
 #(
+  parameter bit ERROR_STATUS = 0,
+  parameter bit [31:0] DEFAULT_READ_DATA = 32'h00000000,
   parameter bit [3:0][3:0] REGISTER_8_BIT_FIELD_1_INITIAL_VALUE = {4{4'h0}}
 )(
   input logic i_clk,
@@ -76,9 +78,11 @@ module block_0
 );
   rggen_register_if #(8, 32, 64) register_if[23]();
   rggen_apb_adapter #(
-    .ADDRESS_WIDTH  (8),
-    .BUS_WIDTH      (32),
-    .REGISTERS      (23)
+    .ADDRESS_WIDTH      (8),
+    .BUS_WIDTH          (32),
+    .REGISTERS          (23),
+    .ERROR_STATUS       (ERROR_STATUS),
+    .DEFAULT_READ_DATA  (DEFAULT_READ_DATA)
   ) u_adapter (
     .i_clk        (i_clk),
     .i_rst_n      (i_rst_n),
