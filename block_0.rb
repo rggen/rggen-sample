@@ -6,7 +6,6 @@ register_block {
 
   register {
     name 'register_0'
-    offset_address 0x00
     bit_field { name 'bit_field_0'; bit_assignment width: 4; type :rw; initial_value 0 }
     bit_field { name 'bit_field_1'; bit_assignment width: 4; type :rw; initial_value 0 }
     bit_field { name 'bit_field_2'; bit_assignment width: 1; type :rw; initial_value 0 }
@@ -14,7 +13,6 @@ register_block {
 
   register {
     name 'register_1'
-    offset_address 0x04
     bit_field { bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
   }
 
