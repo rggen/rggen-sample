@@ -37,6 +37,7 @@
 |bit_field_0|[3:0]|rw|0x0|||
 |bit_field_1|[7:4]|rw|0x0|||
 |bit_field_2|[8]|rw|0x0|||
+|bit_field_3|[10:9]|w1|0x0|||
 
 ### <div id="block_0-register_1"></div>register_1
 
@@ -85,8 +86,9 @@
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
 |bit_field_0|[3:0]|wo|0x0|||
-|bit_field_1|[11:8]|w0trg||||
-|bit_field_2|[19:16]|w1trg||||
+|bit_field_1|[7:4]|wo1|0x0|||
+|bit_field_2|[11:8]|w0trg||||
+|bit_field_3|[19:16]|w1trg||||
 
 ### <div id="block_0-register_4"></div>register_4
 
@@ -120,9 +122,9 @@
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
 |bit_field_0|[1:0]|rwc|0x0|||
-|bit_field_1|[3:2]|rwc|0x0|register_3.bit_field_1||
+|bit_field_1|[3:2]|rwc|0x0|register_3.bit_field_2||
 |bit_field_2|[5:4]|rws|0x0|||
-|bit_field_3|[7:6]|rws|0x0|register_3.bit_field_2||
+|bit_field_3|[7:6]|rws|0x0|register_3.bit_field_3||
 |bit_field_4|[9:8]|rwe|0x0|||
 |bit_field_5|[11:10]|rwe|0x0|register_0.bit_field_2||
 |bit_field_6|[13:12]|rwe|0x0|register_1||
