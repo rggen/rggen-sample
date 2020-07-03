@@ -54,8 +54,14 @@ register_block {
         name 'register_0'
         offset_address 0x00
         size [2, 3]
-        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 4, sequence_size: 2; type :rw; initial_value 0 }
-        bit_field { name 'bit_field_1'; bit_assignment lsb: 8, width: 4, sequence_size: 2; type :ro; reference 'register_file_2.register_file_0.register_0.bit_field_0' }
+        bit_field { name 'bit_field_0'; bit_assignment lsb:  0, width: 4, sequence_size: 2; type  :rw; initial_value 0 }
+        bit_field { name 'bit_field_1'; bit_assignment lsb:  8, width: 4, sequence_size: 2; type :rwe; initial_value 0; reference 'register_file_0.register_0.bit_field_0' }
+        bit_field { name 'bit_field_2'; bit_assignment lsb: 16, width: 4, sequence_size: 2; type :rwl; initial_value 0; reference 'register_file_2.register_file_0.register_1.bit_field_0' }
+      }
+      register {
+        name 'register_1'
+        offset_address 0x18
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1, sequence_size: 2; type :rw; initial_value 0 }
       }
     }
   }
