@@ -1,34 +1,28 @@
 ## block_0
 
-* name
-    * block_0
 * byte_size
     * 256
 
-|name|offset_address|
-|:--|:--|
-|[register_0](#block_0-register_0)|0x00 - 0x03|
-|[register_1](#block_0-register_1)|0x04 - 0x07|
-|[register_2](#block_0-register_2)|0x08 - 0x0b|
-|[register_3](#block_0-register_3)|0x08 - 0x0b|
-|[register_4](#block_0-register_4)|0x0c - 0x0f|
-|[register_5](#block_0-register_5)|0x10 - 0x13|
-|[register_6](#block_0-register_6)|0x14 - 0x17|
-|[register_7](#block_0-register_7)|0x18 - 0x1b|
-|[register_8](#block_0-register_8)|0x20 - 0x3f|
-|[register_9](#block_0-register_9)|0x40 - 0x47|
-|[register_10](#block_0-register_10)|0x40 - 0x43|
-|[register_11](#block_0-register_11)|0x44 - 0x47|
-|[register_12](#block_0-register_12)|0x80 - 0xff|
+|name|
+|:--|
+|[register_0](#block_0-register_0)|
+|[register_1](#block_0-register_1)|
+|[register_2](#block_0-register_2)|
+|[register_3](#block_0-register_3)|
+|[register_4](#block_0-register_4)|
+|[register_5](#block_0-register_5)|
+|[register_6](#block_0-register_6)|
+|[register_7](#block_0-register_7)|
+|[register_8[4]](#block_0-register_8)|
+|[register_9[2][4]](#block_0-register_9)|
+|[register_10](#block_0-register_10)|
+|[register_11](#block_0-register_11)|
+|[register_12](#block_0-register_12)|
 
 ### <div id="block_0-register_0"></div>register_0
 
-* name
-    * register_0
 * offset_address
-    * 0x00 - 0x03
-* array_size
-    * NA
+    * 0x00
 * type
     * default
 
@@ -41,12 +35,8 @@
 
 ### <div id="block_0-register_1"></div>register_1
 
-* name
-    * register_1
 * offset_address
-    * 0x04 - 0x07
-* array_size
-    * NA
+    * 0x04
 * type
     * default
 
@@ -56,12 +46,8 @@
 
 ### <div id="block_0-register_2"></div>register_2
 
-* name
-    * register_2
 * offset_address
-    * 0x08 - 0x0b
-* array_size
-    * NA
+    * 0x08
 * type
     * default
 
@@ -74,12 +60,8 @@
 
 ### <div id="block_0-register_3"></div>register_3
 
-* name
-    * register_3
 * offset_address
-    * 0x08 - 0x0b
-* array_size
-    * NA
+    * 0x08
 * type
     * default
 
@@ -92,12 +74,8 @@
 
 ### <div id="block_0-register_4"></div>register_4
 
-* name
-    * register_4
 * offset_address
-    * 0x0c - 0x0f
-* array_size
-    * NA
+    * 0x0c
 * type
     * default
 
@@ -110,12 +88,8 @@
 
 ### <div id="block_0-register_5"></div>register_5
 
-* name
-    * register_5
 * offset_address
-    * 0x10 - 0x13
-* array_size
-    * NA
+    * 0x10
 * type
     * default
 
@@ -134,12 +108,8 @@
 
 ### <div id="block_0-register_6"></div>register_6
 
-* name
-    * register_6
 * offset_address
-    * 0x14 - 0x17
-* array_size
-    * NA
+    * 0x14
 * type
     * default
 
@@ -156,12 +126,8 @@
 
 ### <div id="block_0-register_7"></div>register_7
 
-* name
-    * register_7
 * offset_address
-    * 0x18 - 0x1b
-* array_size
-    * NA
+    * 0x18
 * type
     * default
 
@@ -172,31 +138,26 @@
 |bit_field_2|[19:16]|w0src|0x0|||
 |bit_field_3|[27:24]|w1src|0x0|||
 
-### <div id="block_0-register_8"></div>register_8
+### <div id="block_0-register_8"></div>register_8[4]
 
-* name
-    * register_8
 * offset_address
-    * 0x20 - 0x3f
-* array_size
-    * [4]
+    * 0x20
+    * 0x28
+    * 0x30
+    * 0x38
 * type
     * default
 
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
-|bit_field_0|[3:0]<br>[19:16]<br>[35:32]<br>[51:48]|rw|0x0|||
-|bit_field_1|[7:4]<br>[23:20]<br>[39:36]<br>[55:52]|rw|default: 0x0|||
-|bit_field_2|[11:8]<br>[27:24]<br>[43:40]<br>[59:56]|rw|0x0<br>0x1<br>0x2<br>0x3|||
+|bit_field_0[4]|[3:0]<br>[19:16]<br>[35:32]<br>[51:48]|rw|0x0|||
+|bit_field_1[4]|[7:4]<br>[23:20]<br>[39:36]<br>[55:52]|rw|default: 0x0|||
+|bit_field_2[4]|[11:8]<br>[27:24]<br>[43:40]<br>[59:56]|rw|0x0<br>0x1<br>0x2<br>0x3|||
 
-### <div id="block_0-register_9"></div>register_9
+### <div id="block_0-register_9"></div>register_9[2][4]
 
-* name
-    * register_9
 * offset_address
-    * 0x40 - 0x47
-* array_size
-    * [2, 4]
+    * 0x40
 * type
     * indirect
 * index_bit_fields
@@ -206,17 +167,13 @@
 
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
-|bit_field_0|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|rw|0x00|||
-|bit_field_1|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|rw|0x00|||
+|bit_field_0[4]|[7:0]<br>[23:16]<br>[39:32]<br>[55:48]|rw|0x00|||
+|bit_field_1[4]|[15:8]<br>[31:24]<br>[47:40]<br>[63:56]|rw|0x00|||
 
 ### <div id="block_0-register_10"></div>register_10
 
-* name
-    * register_10
 * offset_address
-    * 0x40 - 0x43
-* array_size
-    * NA
+    * 0x40
 * type
     * indirect
 * index_bit_fields
@@ -228,12 +185,8 @@
 
 ### <div id="block_0-register_11"></div>register_11
 
-* name
-    * register_11
 * offset_address
-    * 0x44 - 0x47
-* array_size
-    * NA
+    * 0x44
 * type
     * indirect
 * index_bit_fields
@@ -245,11 +198,9 @@
 
 ### <div id="block_0-register_12"></div>register_12
 
-* name
-    * register_12
 * offset_address
-    * 0x80 - 0xff
-* array_size
-    * NA
+    * 0x80
 * type
     * external
+* byte_size
+    * 128 bytes
