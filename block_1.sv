@@ -36,6 +36,7 @@ module block_1
     .REGISTERS            (20),
     .PRE_DECODE           (PRE_DECODE),
     .BASE_ADDRESS         (BASE_ADDRESS),
+    .BYTE_SIZE            (128),
     .ERROR_STATUS         (ERROR_STATUS),
     .DEFAULT_READ_DATA    (DEFAULT_READ_DATA)
   ) u_adapter (
