@@ -3,6 +3,10 @@
 register_block {
   name 'block_1'
   byte_size 128
+  comment <<~COMMENT
+    this is block_1.
+    this block includes six registers.
+  COMMENT
 
   register_file {
     name 'register_file_0'
@@ -10,6 +14,10 @@ register_block {
     register {
       name 'register_0'
       offset_address 0x00
+      comment [
+        'this is register_0.',
+        'bit_field_0 is within this register.'
+      ]
       bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 8; type :rw; initial_value 0 }
     }
     register {

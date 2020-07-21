@@ -2,6 +2,8 @@
 
 * byte_size
     * 128
+* comment
+    * this is block_1.<br>this block includes six registers.
 
 |name|
 |:--|
@@ -18,6 +20,8 @@
     * 0x00
 * type
     * default
+* comment
+    * this is register_0.<br>bit_field_0 is within this register.
 
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
