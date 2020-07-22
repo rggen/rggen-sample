@@ -10,7 +10,7 @@
 module block_1
   import rggen_rtl_pkg::*;
 #(
-  parameter int ADDRESS_WIDTH = 16,
+  parameter int ADDRESS_WIDTH = 7,
   parameter bit PRE_DECODE = 0,
   parameter bit [ADDRESS_WIDTH-1:0] BASE_ADDRESS = '0,
   parameter bit ERROR_STATUS = 0,
