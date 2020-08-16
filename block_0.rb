@@ -70,11 +70,13 @@ register_block {
     bit_field { name 'bit_field_5'; bit_assignment lsb: 20, width: 4; type :ro ;                  reference 'register_6.bit_field_4' }
     bit_field { name 'bit_field_6'; bit_assignment lsb: 24, width: 4; type :w0s; initial_value 0 }
     bit_field { name 'bit_field_7'; bit_assignment lsb: 28, width: 4; type :w1s; initial_value 0 }
+    bit_field { name 'bit_field_8'; bit_assignment lsb: 32, width: 4; type :w0t; initial_value 0 }
+    bit_field { name 'bit_field_9'; bit_assignment lsb: 36, width: 4; type :w1t; initial_value 0 }
   }
 
   register {
     name 'register_7'
-    offset_address 0x18
+    offset_address 0x1C
     bit_field { name 'bit_field_0'; bit_assignment lsb:  0, width: 4; type :w0crs; initial_value 0 }
     bit_field { name 'bit_field_1'; bit_assignment lsb:  8, width: 4; type :w1crs; initial_value 0 }
     bit_field { name 'bit_field_2'; bit_assignment lsb: 16, width: 4; type :w0src; initial_value 0 }

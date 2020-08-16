@@ -123,11 +123,13 @@
 |bit_field_5|[23:20]|ro||register_6.bit_field_4||
 |bit_field_6|[27:24]|w0s|0x0|||
 |bit_field_7|[31:28]|w1s|0x0|||
+|bit_field_8|[35:32]|w0t|0x0|||
+|bit_field_9|[39:36]|w1t|0x0|||
 
 ### <div id="block_0-register_7"></div>register_7
 
 * offset_address
-    * 0x18
+    * 0x1c
 * type
     * default
 
