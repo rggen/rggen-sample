@@ -29,7 +29,7 @@
 
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
-|bit_field_0|[3:0]|rw|0x0|||
+|bit_field_0|[3:0]|rw|0x0||this is register_0.bit_field_0|
 |bit_field_1|[7:4]|rw|0x0|||
 |bit_field_2|[8]|rw|0x0|||
 |bit_field_3|[10:9]|w1|0x0|||

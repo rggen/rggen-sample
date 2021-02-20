@@ -9,6 +9,7 @@ name            = 'bit_field_0'
 bit_assignment  = { width = 4 }
 type            = 'rw'
 initial_value   = 0
+comment         = 'this is register_0.bit_field_0'
 [[register_blocks.registers.bit_fields]]
 name            = 'bit_field_1'
 bit_assignment  = { width = 4 }
