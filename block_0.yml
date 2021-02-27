@@ -125,6 +125,10 @@ register_blocks:
       - { name: bit_field_0, bit_assignment: { lsb: 0, width: 1}, type: rw, initial_value: 0 }
 
     - name: register_13
+      offset_address: 0x60
+      type: reserved
+
+    - name: register_14
       offset_address: 0x80
       size: 32
       type: external

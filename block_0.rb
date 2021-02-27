@@ -135,6 +135,12 @@ register_block {
 
   register {
     name 'register_13'
+    offset_address 0x60
+    type :reserved
+  }
+
+  register {
+    name 'register_14'
     offset_address 0x80
     size 32
     type :external

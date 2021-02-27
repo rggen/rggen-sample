@@ -19,6 +19,7 @@
 |[register_11](#block_0-register_11)|
 |[register_12](#block_0-register_12)|
 |[register_13](#block_0-register_13)|
+|[register_14](#block_0-register_14)|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -218,6 +219,13 @@
 |bit_field_0|[0]|rw|0x0|||
 
 ### <div id="block_0-register_13"></div>register_13
+
+* offset_address
+    * 0x60
+* type
+    * reserved
+
+### <div id="block_0-register_14"></div>register_14
 
 * offset_address
     * 0x80

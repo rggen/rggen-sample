@@ -343,6 +343,11 @@ initial_value   = 0
 
 [[register_blocks.registers]]
 name            = 'register_13'
+offset_address  = 0x60
+type            = 'reserved'
+
+[[register_blocks.registers]]
+name            = 'register_14'
 offset_address  = 0x80
 size            = 32
 type            = 'external'
