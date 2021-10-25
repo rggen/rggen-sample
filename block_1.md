@@ -5,14 +5,14 @@
 * comment
     * this is block_1.<br>this block includes six registers.
 
-|name|
-|:--|
-|[register_file_0.register_0](#block_1-register_file_0-register_0)|
-|[register_file_0.register_1](#block_1-register_file_0-register_1)|
-|[register_file_1.register_0[2]](#block_1-register_file_1-register_0)|
-|[register_file_1.register_1[2]](#block_1-register_file_1-register_1)|
-|[register_file_2[2].register_file_0.register_0[2][3]](#block_1-register_file_2-register_file_0-register_0)|
-|[register_file_2[2].register_file_0.register_1](#block_1-register_file_2-register_file_0-register_1)|
+|name|offset_address|
+|:--|:--|
+|[register_file_0.register_0](#block_1-register_file_0-register_0)|0x00|
+|[register_file_0.register_1](#block_1-register_file_0-register_1)|0x04|
+|[register_file_1.register_0[2]](#block_1-register_file_1-register_0)|0x10|
+|[register_file_1.register_1[2]](#block_1-register_file_1-register_1)|0x10|
+|[register_file_2[2].register_file_0.register_0[2][3]](#block_1-register_file_2-register_file_0-register_0)|0x20<br>0x24<br>0x28<br>0x2c<br>0x30<br>0x34<br>0x3c<br>0x40<br>0x44<br>0x48<br>0x4c<br>0x50|
+|[register_file_2[2].register_file_0.register_1](#block_1-register_file_2-register_file_0-register_1)|0x38<br>0x54|
 
 ### <div id="block_1-register_file_0-register_0"></div>register_file_0.register_0
 

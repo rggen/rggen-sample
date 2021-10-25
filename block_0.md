@@ -3,23 +3,23 @@
 * byte_size
     * 256
 
-|name|
-|:--|
-|[register_0](#block_0-register_0)|
-|[register_1](#block_0-register_1)|
-|[register_2](#block_0-register_2)|
-|[register_3](#block_0-register_3)|
-|[register_4](#block_0-register_4)|
-|[register_5](#block_0-register_5)|
-|[register_6](#block_0-register_6)|
-|[register_7](#block_0-register_7)|
-|[register_8](#block_0-register_8)|
-|[register_9[4]](#block_0-register_9)|
-|[register_10[2][4]](#block_0-register_10)|
-|[register_11](#block_0-register_11)|
-|[register_12](#block_0-register_12)|
-|[register_13](#block_0-register_13)|
-|[register_14](#block_0-register_14)|
+|name|offset_address|
+|:--|:--|
+|[register_0](#block_0-register_0)|0x00|
+|[register_1](#block_0-register_1)|0x04|
+|[register_2](#block_0-register_2)|0x08|
+|[register_3](#block_0-register_3)|0x08|
+|[register_4](#block_0-register_4)|0x0c|
+|[register_5](#block_0-register_5)|0x10|
+|[register_6](#block_0-register_6)|0x14|
+|[register_7](#block_0-register_7)|0x1c|
+|[register_8](#block_0-register_8)|0x20|
+|[register_9[4]](#block_0-register_9)|0x30<br>0x38<br>0x40<br>0x48|
+|[register_10[2][4]](#block_0-register_10)|0x50|
+|[register_11](#block_0-register_11)|0x50|
+|[register_12](#block_0-register_12)|0x54|
+|[register_13](#block_0-register_13)|0x60|
+|[register_14](#block_0-register_14)|0x80|
 
 ### <div id="block_0-register_0"></div>register_0
 
