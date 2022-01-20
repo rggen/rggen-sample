@@ -36,6 +36,7 @@
 |bit_field_3|[10:9]|w1|0x0|||
 |bit_field_4|[12:11]|wrc|0x0|||
 |bit_field_5|[14:13]|wrs|0x0|||
+|bit_field_6|[16:15]|rowo|0x0|||
 
 ### <div id="block_0-register_1"></div>register_1
 

@@ -35,6 +35,11 @@ name            = 'bit_field_5'
 bit_assignment  = { width = 2 }
 type            = 'wrs'
 initial_value   = 0
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_6'
+bit_assignment  = { width = 2 }
+type            = 'rowo'
+initial_value   = 0
 
 [[register_blocks.registers]]
 name  = 'register_1'

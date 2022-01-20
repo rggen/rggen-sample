@@ -6,12 +6,13 @@ register_block {
 
   register {
     name 'register_0'
-    bit_field { name 'bit_field_0'; bit_assignment width: 4; type :rw ; initial_value 0; comment 'this is register_0.bit_field_0' }
-    bit_field { name 'bit_field_1'; bit_assignment width: 4; type :rw ; initial_value 0 }
-    bit_field { name 'bit_field_2'; bit_assignment width: 1; type :rw ; initial_value 0 }
-    bit_field { name 'bit_field_3'; bit_assignment width: 2; type :w1 ; initial_value 0 }
-    bit_field { name 'bit_field_4'; bit_assignment width: 2; type :wrc; initial_value 0 }
-    bit_field { name 'bit_field_5'; bit_assignment width: 2; type :wrs; initial_value 0 }
+    bit_field { name 'bit_field_0'; bit_assignment width: 4; type :rw  ; initial_value 0; comment 'this is register_0.bit_field_0' }
+    bit_field { name 'bit_field_1'; bit_assignment width: 4; type :rw  ; initial_value 0 }
+    bit_field { name 'bit_field_2'; bit_assignment width: 1; type :rw  ; initial_value 0 }
+    bit_field { name 'bit_field_3'; bit_assignment width: 2; type :w1  ; initial_value 0 }
+    bit_field { name 'bit_field_4'; bit_assignment width: 2; type :wrc ; initial_value 0 }
+    bit_field { name 'bit_field_5'; bit_assignment width: 2; type :wrs ; initial_value 0 }
+    bit_field { name 'bit_field_6'; bit_assignment width: 2; type :rowo; initial_value 0 }
   }
 
   register {
