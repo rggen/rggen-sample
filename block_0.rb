@@ -99,6 +99,15 @@ register_block {
 
   register {
     name 'register_9'
+    offset_address 0x28
+    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 2; type :rwtrg  ; initial_value 0 }
+    bit_field { name 'bit_field_1'; bit_assignment lsb: 2, width: 2; type :rotrg  }
+    bit_field { name 'bit_field_2'; bit_assignment lsb: 4, width: 2; type :wotrg  ; initial_value 0 }
+    bit_field { name 'bit_field_3'; bit_assignment lsb: 6, width: 2; type :rowotrg; initial_value 0 }
+  }
+
+  register {
+    name 'register_10'
     offset_address 0x30
     size 4
     # bit assignments: [ 3:0] [19:16] [35:32] [51:48]
@@ -110,7 +119,7 @@ register_block {
   }
 
   register {
-    name 'register_10'
+    name 'register_11'
     offset_address 0x50
     size [2, 4]
     type [:indirect, 'register_0.bit_field_0', 'register_0.bit_field_1', ['register_0.bit_field_2', 0]]
@@ -121,27 +130,27 @@ register_block {
   }
 
   register {
-    name 'register_11'
+    name 'register_12'
     offset_address 0x50
     type [:indirect, ['register_0.bit_field_2', 1]]
     bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
   }
 
   register {
-    name 'register_12'
+    name 'register_13'
     offset_address 0x54
     type [:indirect, ['register_0.bit_field_2', 1]]
     bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
   }
 
   register {
-    name 'register_13'
+    name 'register_14'
     offset_address 0x60
     type :reserved
   }
 
   register {
-    name 'register_14'
+    name 'register_15'
     offset_address 0x80
     size 32
     type :external

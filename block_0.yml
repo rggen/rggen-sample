@@ -79,14 +79,22 @@ register_blocks:
     - name: register_8
       offset_address: 0x20
       bit_fields:
-      - { name: 'bit_field_0', bit_assignment: { lsb:  0, width: 4 }, type: wc  , initial_value: 0 }
-      - { name: 'bit_field_1', bit_assignment: { lsb:  8, width: 4 }, type: ws  , initial_value: 0 }
-      - { name: 'bit_field_2', bit_assignment: { lsb: 16, width: 4 }, type: woc , initial_value: 0 }
-      - { name: 'bit_field_3', bit_assignment: { lsb: 24, width: 4 }, type: wos , initial_value: 0 }
-      - { name: 'bit_field_4', bit_assignment: { lsb: 32, width: 4 }, type: wcrs, initial_value: 0 }
-      - { name: 'bit_field_5', bit_assignment: { lsb: 40, width: 4 }, type: wsrc, initial_value: 0 }
+      - { name: bit_field_0, bit_assignment: { lsb:  0, width: 4 }, type: wc  , initial_value: 0 }
+      - { name: bit_field_1, bit_assignment: { lsb:  8, width: 4 }, type: ws  , initial_value: 0 }
+      - { name: bit_field_2, bit_assignment: { lsb: 16, width: 4 }, type: woc , initial_value: 0 }
+      - { name: bit_field_3, bit_assignment: { lsb: 24, width: 4 }, type: wos , initial_value: 0 }
+      - { name: bit_field_4, bit_assignment: { lsb: 32, width: 4 }, type: wcrs, initial_value: 0 }
+      - { name: bit_field_5, bit_assignment: { lsb: 40, width: 4 }, type: wsrc, initial_value: 0 }
 
     - name: register_9
+      offset_address: 0x28
+      bit_fields:
+      - { name: bit_field_0, bit_assignment: { lsb: 0, width: 2 }, type: rwtrg  , initial_value: 0 }
+      - { name: bit_field_1, bit_assignment: { lsb: 2, width: 2 }, type: rotrg  }
+      - { name: bit_field_2, bit_assignment: { lsb: 4, width: 2 }, type: wotrg  , initial_value: 0 }
+      - { name: bit_field_3, bit_assignment: { lsb: 6, width: 2 }, type: rowotrg, initial_value: 0 }
+
+    - name: register_10
       offset_address: 0x30
       size: 4
       bit_fields:
@@ -103,7 +111,7 @@ register_blocks:
         - { name: bit_field_2, bit_assignment: { lsb: 8, width: 4, sequence_size: 4, step: 16 }, type: rw }
         - initial_value: [0, 1, 2, 3]
 
-    - name: register_10
+    - name: register_11
       offset_address: 0x50
       size: [2, 4]
       type: [indirect, register_0.bit_field_0, register_0.bit_field_1, [register_0.bit_field_2, 0]]
@@ -113,23 +121,23 @@ register_blocks:
       - # bit assignments: [15:8] [31:24] [47:40] [63:56]
         { name: bit_field_1, bit_assignment: { lsb: 8, width: 8, sequence_size: 4, step: 16 }, type: rw, initial_value: 0 }
 
-    - name: register_11
+    - name: register_12
       offset_address: 0x50
       type: [indirect, [register_0.bit_field_2, 1]]
       bit_fields:
       - { name: bit_field_0, bit_assignment: { lsb: 0, width: 1}, type: rw, initial_value: 0 }
 
-    - name: register_12
+    - name: register_13
       offset_address: 0x54
       type: [indirect, [register_0.bit_field_2, 1]]
       bit_fields:
       - { name: bit_field_0, bit_assignment: { lsb: 0, width: 1}, type: rw, initial_value: 0 }
 
-    - name: register_13
+    - name: register_14
       offset_address: 0x60
       type: reserved
 
-    - name: register_14
+    - name: register_15
       offset_address: 0x80
       size: 32
       type: external
