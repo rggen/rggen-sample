@@ -543,8 +543,8 @@ begin
           TRIGGER             => false
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(3 downto 0),
           i_sw_write_enable => "0",
@@ -574,8 +574,8 @@ begin
           TRIGGER             => false
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(11 downto 8),
           i_sw_write_enable => "0",
@@ -883,8 +883,8 @@ begin
           TRIGGER             => false
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(15 downto 12),
           i_sw_write_enable => "0",
@@ -1388,8 +1388,8 @@ begin
           TRIGGER             => false
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(11 downto 8),
           i_sw_write_enable => "0",
@@ -1483,8 +1483,8 @@ begin
           TRIGGER             => false
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(23 downto 20),
           i_sw_write_enable => "0",
@@ -2103,8 +2103,8 @@ begin
           TRIGGER             => true
         )
         port map (
-          i_clk             => '0',
-          i_rst_n           => '0',
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
           i_sw_valid        => bit_field_valid,
           i_sw_read_mask    => bit_field_read_mask(3 downto 2),
           i_sw_write_enable => "0",

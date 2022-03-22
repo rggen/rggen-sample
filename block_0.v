@@ -496,8 +496,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (0)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[0+:4]),
         .i_sw_write_enable  (1'b0),
@@ -524,8 +524,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (0)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[8+:4]),
         .i_sw_write_enable  (1'b0),
@@ -799,8 +799,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (0)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[12+:4]),
         .i_sw_write_enable  (1'b0),
@@ -1253,8 +1253,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (0)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[8+:4]),
         .i_sw_write_enable  (1'b0),
@@ -1337,8 +1337,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (0)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[20+:4]),
         .i_sw_write_enable  (1'b0),
@@ -1894,8 +1894,8 @@ module block_0 #(
         .EXTERNAL_READ_DATA (1),
         .TRIGGER            (1)
       ) u_bit_field (
-        .i_clk              (1'b0),
-        .i_rst_n            (1'b0),
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
         .i_sw_valid         (w_bit_field_valid),
         .i_sw_read_mask     (w_bit_field_read_mask[2+:2]),
         .i_sw_write_enable  (1'b0),
