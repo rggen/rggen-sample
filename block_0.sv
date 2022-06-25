@@ -1761,8 +1761,8 @@ module block_0
     genvar j;
     for (i = 0;i < 2;++i) begin : g
       for (j = 0;j < 4;++j) begin : g
-        logic [8:0] indirect_index;
         rggen_bit_field_if #(64) bit_field_if();
+        logic [8:0] indirect_index;
         `rggen_tie_off_unused_signals(64, 64'hffffffffffffffff, bit_field_if)
         assign indirect_index = {register_if[0].value[0+:4], register_if[0].value[4+:4], register_if[0].value[8+:1]};
         rggen_indirect_register #(
@@ -1843,8 +1843,8 @@ module block_0
     end
   end endgenerate
   generate if (1) begin : g_register_12
-    logic indirect_index;
     rggen_bit_field_if #(32) bit_field_if();
+    logic indirect_index;
     `rggen_tie_off_unused_signals(32, 32'h00000001, bit_field_if)
     assign indirect_index = {register_if[0].value[8+:1]};
     rggen_indirect_register #(
@@ -1891,8 +1891,8 @@ module block_0
     end
   end endgenerate
   generate if (1) begin : g_register_13
-    logic indirect_index;
     rggen_bit_field_if #(32) bit_field_if();
+    logic indirect_index;
     `rggen_tie_off_unused_signals(32, 32'h00000001, bit_field_if)
     assign indirect_index = {register_if[0].value[8+:1]};
     rggen_indirect_register #(

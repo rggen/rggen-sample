@@ -2393,13 +2393,13 @@ begin
     g: for i in 0 to 1 generate
     begin
       g: for j in 0 to 3 generate
-        signal indirect_match: std_logic_vector(2 downto 0);
         signal bit_field_valid: std_logic;
         signal bit_field_read_mask: std_logic_vector(63 downto 0);
         signal bit_field_write_mask: std_logic_vector(63 downto 0);
         signal bit_field_write_data: std_logic_vector(63 downto 0);
         signal bit_field_read_data: std_logic_vector(63 downto 0);
         signal bit_field_value: std_logic_vector(63 downto 0);
+        signal indirect_match: std_logic_vector(2 downto 0);
       begin
         \g_tie_off\: for \__i\ in 0 to 63 generate
           g: if (bit_slice(x"ffffffffffffffff", \__i\) = '0') generate
@@ -2513,13 +2513,13 @@ begin
     end generate;
   end block;
   g_register_12: block
-    signal indirect_match: std_logic_vector(0 downto 0);
     signal bit_field_valid: std_logic;
     signal bit_field_read_mask: std_logic_vector(31 downto 0);
     signal bit_field_write_mask: std_logic_vector(31 downto 0);
     signal bit_field_write_data: std_logic_vector(31 downto 0);
     signal bit_field_read_data: std_logic_vector(31 downto 0);
     signal bit_field_value: std_logic_vector(31 downto 0);
+    signal indirect_match: std_logic_vector(0 downto 0);
   begin
     \g_tie_off\: for \__i\ in 0 to 31 generate
       g: if (bit_slice(x"00000001", \__i\) = '0') generate
@@ -2592,13 +2592,13 @@ begin
     end block;
   end block;
   g_register_13: block
-    signal indirect_match: std_logic_vector(0 downto 0);
     signal bit_field_valid: std_logic;
     signal bit_field_read_mask: std_logic_vector(31 downto 0);
     signal bit_field_write_mask: std_logic_vector(31 downto 0);
     signal bit_field_write_data: std_logic_vector(31 downto 0);
     signal bit_field_read_data: std_logic_vector(31 downto 0);
     signal bit_field_value: std_logic_vector(31 downto 0);
+    signal indirect_match: std_logic_vector(0 downto 0);
   begin
     \g_tie_off\: for \__i\ in 0 to 31 generate
       g: if (bit_slice(x"00000001", \__i\) = '0') generate
