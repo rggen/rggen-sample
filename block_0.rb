@@ -133,24 +133,18 @@ register_block {
     name 'register_12'
     offset_address 0x50
     type [:indirect, ['register_0.bit_field_2', 1]]
-    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+    bit_field { name 'bit_field_0'; bit_assignment lsb:  0, width: 1; type :rw; initial_value 0 }
+    bit_field { name 'bit_field_1'; bit_assignment lsb: 32, width: 1; type :rw; initial_value 0 }
   }
 
   register {
     name 'register_13'
-    offset_address 0x54
-    type [:indirect, ['register_0.bit_field_2', 1]]
-    bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-  }
-
-  register {
-    name 'register_14'
     offset_address 0x60
     type :reserved
   }
 
   register {
-    name 'register_15'
+    name 'register_14'
     offset_address 0x80
     size 32
     type :external

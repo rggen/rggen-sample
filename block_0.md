@@ -18,9 +18,8 @@
 |[register_10[4]](#block_0-register_10)|0x30<br>0x38<br>0x40<br>0x48|
 |[register_11[2][4]](#block_0-register_11)|0x50|
 |[register_12](#block_0-register_12)|0x50|
-|[register_13](#block_0-register_13)|0x54|
-|[register_14](#block_0-register_14)|0x60|
-|[register_15](#block_0-register_15)|0x80|
+|[register_13](#block_0-register_13)|0x60|
+|[register_14](#block_0-register_14)|0x80|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -220,28 +219,16 @@
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
 |bit_field_0|[0]|rw|0x0|||
+|bit_field_1|[32]|rw|0x0|||
 
 ### <div id="block_0-register_13"></div>register_13
-
-* offset_address
-    * 0x54
-* type
-    * indirect
-* index_bit_fields
-    * register_0.bit_field_2: 1
-
-|name|bit_assignments|type|initial_value|reference|comment|
-|:--|:--|:--|:--|:--|:--|
-|bit_field_0|[0]|rw|0x0|||
-
-### <div id="block_0-register_14"></div>register_14
 
 * offset_address
     * 0x60
 * type
     * reserved
 
-### <div id="block_0-register_15"></div>register_15
+### <div id="block_0-register_14"></div>register_14
 
 * offset_address
     * 0x80
