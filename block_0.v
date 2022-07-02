@@ -98,6 +98,10 @@ module block_0 #(
   input [1:0] i_register_9_bit_field_3,
   output o_register_9_bit_field_3_write_trigger,
   output o_register_9_bit_field_3_read_trigger,
+  input [1:0] i_register_9_bit_field_4,
+  output [1:0] o_register_9_bit_field_4_trigger,
+  input [1:0] i_register_9_bit_field_5,
+  output [1:0] o_register_9_bit_field_5_trigger,
   output [63:0] o_register_10_bit_field_0,
   output [63:0] o_register_10_bit_field_1,
   output [63:0] o_register_10_bit_field_2,
@@ -672,15 +676,17 @@ module block_0 #(
         .TRIGGER_VALUE  (1'b0),
         .WIDTH          (4)
       ) u_bit_field (
-        .i_clk                  (i_clk),
-        .i_rst_n                (i_rst_n),
-        .i_bit_field_valid      (w_bit_field_valid),
-        .i_bit_field_read_mask  (w_bit_field_read_mask[8+:4]),
-        .i_bit_field_write_mask (w_bit_field_write_mask[8+:4]),
-        .i_bit_field_write_data (w_bit_field_write_data[8+:4]),
-        .o_bit_field_read_data  (w_bit_field_read_data[8+:4]),
-        .o_bit_field_value      (w_bit_field_value[8+:4]),
-        .o_trigger              (o_register_3_bit_field_2_trigger)
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
+        .i_sw_valid         (w_bit_field_valid),
+        .i_sw_read_mask     (w_bit_field_read_mask[8+:4]),
+        .i_sw_write_enable  (1'b1),
+        .i_sw_write_mask    (w_bit_field_write_mask[8+:4]),
+        .i_sw_write_data    (w_bit_field_write_data[8+:4]),
+        .o_sw_read_data     (w_bit_field_read_data[8+:4]),
+        .o_sw_value         (w_bit_field_value[8+:4]),
+        .i_value            ({4{1'b0}}),
+        .o_trigger          (o_register_3_bit_field_2_trigger)
       );
     end
     if (1) begin : g_bit_field_3
@@ -688,15 +694,17 @@ module block_0 #(
         .TRIGGER_VALUE  (1'b1),
         .WIDTH          (4)
       ) u_bit_field (
-        .i_clk                  (i_clk),
-        .i_rst_n                (i_rst_n),
-        .i_bit_field_valid      (w_bit_field_valid),
-        .i_bit_field_read_mask  (w_bit_field_read_mask[16+:4]),
-        .i_bit_field_write_mask (w_bit_field_write_mask[16+:4]),
-        .i_bit_field_write_data (w_bit_field_write_data[16+:4]),
-        .o_bit_field_read_data  (w_bit_field_read_data[16+:4]),
-        .o_bit_field_value      (w_bit_field_value[16+:4]),
-        .o_trigger              (o_register_3_bit_field_3_trigger)
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
+        .i_sw_valid         (w_bit_field_valid),
+        .i_sw_read_mask     (w_bit_field_read_mask[16+:4]),
+        .i_sw_write_enable  (1'b1),
+        .i_sw_write_mask    (w_bit_field_write_mask[16+:4]),
+        .i_sw_write_data    (w_bit_field_write_data[16+:4]),
+        .o_sw_read_data     (w_bit_field_read_data[16+:4]),
+        .o_sw_value         (w_bit_field_value[16+:4]),
+        .i_value            ({4{1'b0}}),
+        .o_trigger          (o_register_3_bit_field_3_trigger)
       );
     end
   end endgenerate
@@ -1830,7 +1838,7 @@ module block_0 #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    `rggen_tie_off_unused_signals(32, 32'h000000ff, w_bit_field_read_data, w_bit_field_value)
+    `rggen_tie_off_unused_signals(32, 32'h00000fff, w_bit_field_read_data, w_bit_field_value)
     rggen_default_register #(
       .READABLE       (1),
       .WRITABLE       (1),
@@ -1970,6 +1978,42 @@ module block_0 #(
         .i_mask             ({2{1'b1}}),
         .o_value            (o_register_9_bit_field_3),
         .o_value_unmasked   ()
+      );
+    end
+    if (1) begin : g_bit_field_4
+      rggen_bit_field_w01trg #(
+        .TRIGGER_VALUE  (1'b0),
+        .WIDTH          (2)
+      ) u_bit_field (
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
+        .i_sw_valid         (w_bit_field_valid),
+        .i_sw_read_mask     (w_bit_field_read_mask[8+:2]),
+        .i_sw_write_enable  (1'b1),
+        .i_sw_write_mask    (w_bit_field_write_mask[8+:2]),
+        .i_sw_write_data    (w_bit_field_write_data[8+:2]),
+        .o_sw_read_data     (w_bit_field_read_data[8+:2]),
+        .o_sw_value         (w_bit_field_value[8+:2]),
+        .i_value            (i_register_9_bit_field_4),
+        .o_trigger          (o_register_9_bit_field_4_trigger)
+      );
+    end
+    if (1) begin : g_bit_field_5
+      rggen_bit_field_w01trg #(
+        .TRIGGER_VALUE  (1'b1),
+        .WIDTH          (2)
+      ) u_bit_field (
+        .i_clk              (i_clk),
+        .i_rst_n            (i_rst_n),
+        .i_sw_valid         (w_bit_field_valid),
+        .i_sw_read_mask     (w_bit_field_read_mask[10+:2]),
+        .i_sw_write_enable  (1'b1),
+        .i_sw_write_mask    (w_bit_field_write_mask[10+:2]),
+        .i_sw_write_data    (w_bit_field_write_data[10+:2]),
+        .o_sw_read_data     (w_bit_field_read_data[10+:2]),
+        .o_sw_value         (w_bit_field_value[10+:2]),
+        .i_value            (i_register_9_bit_field_5),
+        .o_trigger          (o_register_9_bit_field_5_trigger)
       );
     end
   end endgenerate
