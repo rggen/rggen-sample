@@ -104,6 +104,10 @@ entity block_0 is
     i_register_9_bit_field_3: in std_logic_vector(1 downto 0);
     o_register_9_bit_field_3_write_trigger: out std_logic_vector(0 downto 0);
     o_register_9_bit_field_3_read_trigger: out std_logic_vector(0 downto 0);
+    i_register_9_bit_field_4: in std_logic_vector(1 downto 0);
+    o_register_9_bit_field_4_trigger: out std_logic_vector(1 downto 0);
+    i_register_9_bit_field_5: in std_logic_vector(1 downto 0);
+    o_register_9_bit_field_5_trigger: out std_logic_vector(1 downto 0);
     o_register_10_bit_field_0: out std_logic_vector(63 downto 0);
     o_register_10_bit_field_1: out std_logic_vector(63 downto 0);
     o_register_10_bit_field_2: out std_logic_vector(63 downto 0);
@@ -766,6 +770,7 @@ begin
           i_sw_write_data   => bit_field_write_data(11 downto 8),
           o_sw_read_data    => bit_field_read_data(11 downto 8),
           o_sw_value        => bit_field_value(11 downto 8),
+          i_value           => (others => '0'),
           o_trigger         => o_register_3_bit_field_2_trigger
         );
     end block;
@@ -786,6 +791,7 @@ begin
           i_sw_write_data   => bit_field_write_data(19 downto 16),
           o_sw_read_data    => bit_field_read_data(19 downto 16),
           o_sw_value        => bit_field_value(19 downto 16),
+          i_value           => (others => '0'),
           o_trigger         => o_register_3_bit_field_3_trigger
         );
     end block;
@@ -2077,7 +2083,7 @@ begin
     signal bit_field_value: std_logic_vector(31 downto 0);
   begin
     \g_tie_off\: for \__i\ in 0 to 31 generate
-      g: if (bit_slice(x"000000ff", \__i\) = '0') generate
+      g: if (bit_slice(x"00000fff", \__i\) = '0') generate
         bit_field_read_data(\__i\) <= '0';
         bit_field_value(\__i\) <= '0';
       end generate;
@@ -2235,6 +2241,48 @@ begin
           i_mask            => (others => '1'),
           o_value           => o_register_9_bit_field_3,
           o_value_unmasked  => open
+        );
+    end block;
+    g_bit_field_4: block
+    begin
+      u_bit_field: entity work.rggen_bit_field_w01trg
+        generic map (
+          WRITE_ONE_TRIGGER => false,
+          WIDTH             => 2
+        )
+        port map (
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
+          i_sw_valid        => bit_field_valid,
+          i_sw_read_mask    => bit_field_read_mask(9 downto 8),
+          i_sw_write_enable => "1",
+          i_sw_write_mask   => bit_field_write_mask(9 downto 8),
+          i_sw_write_data   => bit_field_write_data(9 downto 8),
+          o_sw_read_data    => bit_field_read_data(9 downto 8),
+          o_sw_value        => bit_field_value(9 downto 8),
+          i_value           => i_register_9_bit_field_4,
+          o_trigger         => o_register_9_bit_field_4_trigger
+        );
+    end block;
+    g_bit_field_5: block
+    begin
+      u_bit_field: entity work.rggen_bit_field_w01trg
+        generic map (
+          WRITE_ONE_TRIGGER => true,
+          WIDTH             => 2
+        )
+        port map (
+          i_clk             => i_clk,
+          i_rst_n           => i_rst_n,
+          i_sw_valid        => bit_field_valid,
+          i_sw_read_mask    => bit_field_read_mask(11 downto 10),
+          i_sw_write_enable => "1",
+          i_sw_write_mask   => bit_field_write_mask(11 downto 10),
+          i_sw_write_data   => bit_field_write_data(11 downto 10),
+          o_sw_read_data    => bit_field_read_data(11 downto 10),
+          o_sw_value        => bit_field_value(11 downto 10),
+          i_value           => i_register_9_bit_field_5,
+          o_trigger         => o_register_9_bit_field_5_trigger
         );
     end block;
   end block;
