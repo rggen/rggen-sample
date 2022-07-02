@@ -111,6 +111,10 @@ module block_0
   input logic [1:0] i_register_9_bit_field_3,
   output logic o_register_9_bit_field_3_write_trigger,
   output logic o_register_9_bit_field_3_read_trigger,
+  input logic [1:0] i_register_9_bit_field_4,
+  output logic [1:0] o_register_9_bit_field_4_trigger,
+  input logic [1:0] i_register_9_bit_field_5,
+  output logic [1:0] o_register_9_bit_field_5_trigger,
   output logic [3:0][3:0][3:0] o_register_10_bit_field_0,
   output logic [3:0][3:0][3:0] o_register_10_bit_field_1,
   output logic [3:0][3:0][3:0] o_register_10_bit_field_2,
@@ -553,6 +557,7 @@ module block_0
         .i_clk        (i_clk),
         .i_rst_n      (i_rst_n),
         .bit_field_if (bit_field_sub_if),
+        .i_value      ('0),
         .o_trigger    (o_register_3_bit_field_2_trigger)
       );
     end
@@ -566,6 +571,7 @@ module block_0
         .i_clk        (i_clk),
         .i_rst_n      (i_rst_n),
         .bit_field_if (bit_field_sub_if),
+        .i_value      ('0),
         .o_trigger    (o_register_3_bit_field_3_trigger)
       );
     end
@@ -1529,7 +1535,7 @@ module block_0
   end endgenerate
   generate if (1) begin : g_register_9
     rggen_bit_field_if #(32) bit_field_if();
-    `rggen_tie_off_unused_signals(32, 32'h000000ff, bit_field_if)
+    `rggen_tie_off_unused_signals(32, 32'h00000fff, bit_field_if)
     rggen_default_register #(
       .READABLE       (1),
       .WRITABLE       (1),
@@ -1646,6 +1652,34 @@ module block_0
         .i_mask             ('1),
         .o_value            (o_register_9_bit_field_3),
         .o_value_unmasked   ()
+      );
+    end
+    if (1) begin : g_bit_field_4
+      rggen_bit_field_if #(2) bit_field_sub_if();
+      `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 8, 2)
+      rggen_bit_field_w01trg #(
+        .TRIGGER_VALUE  (1'b0),
+        .WIDTH          (2)
+      ) u_bit_field (
+        .i_clk        (i_clk),
+        .i_rst_n      (i_rst_n),
+        .bit_field_if (bit_field_sub_if),
+        .i_value      (i_register_9_bit_field_4),
+        .o_trigger    (o_register_9_bit_field_4_trigger)
+      );
+    end
+    if (1) begin : g_bit_field_5
+      rggen_bit_field_if #(2) bit_field_sub_if();
+      `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 10, 2)
+      rggen_bit_field_w01trg #(
+        .TRIGGER_VALUE  (1'b1),
+        .WIDTH          (2)
+      ) u_bit_field (
+        .i_clk        (i_clk),
+        .i_rst_n      (i_rst_n),
+        .bit_field_if (bit_field_sub_if),
+        .i_value      (i_register_9_bit_field_5),
+        .o_trigger    (o_register_9_bit_field_5_trigger)
       );
     end
   end endgenerate

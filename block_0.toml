@@ -312,6 +312,14 @@ name            = 'bit_field_3'
 bit_assignment  = { lsb = 6, width = 2 }
 type            = 'rowotrg'
 initial_value   = 0
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_4'
+bit_assignment  = { lsb = 8, width = 2 }
+type            = 'row0trg'
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_5'
+bit_assignment  = { lsb = 10, width = 2 }
+type            = 'row1trg'
 
 [[register_blocks.registers]]
 name            = 'register_10'
