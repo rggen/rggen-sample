@@ -174,6 +174,8 @@
 |bit_field_1|[3:2]|rotrg||||
 |bit_field_2|[5:4]|wotrg|0x0|||
 |bit_field_3|[7:6]|rowotrg|0x0|||
+|bit_field_4|[9:8]|row0trg||||
+|bit_field_5|[11:10]|row1trg||||
 
 ### <div id="block_0-register_10"></div>register_10[4]
 
