@@ -31,16 +31,16 @@
         offset_address: 0x00
         size: [2]
         type: [indirect, register_file_0.register_0.bit_field_0, [register_file_0.register_1.bit_field_0, 0]]
-        bit_fields:
-        - { name: bit_field_0, bit_assignment: { lsb: 0, width: 8 }, type: rw, initial_value: 0 }
+        <<: &register_file_1_bit_fiels
+          bit_fields:
+          - { name: bit_field_0, bit_assignment: { lsb: 0, width: 8 }, type: rw, initial_value: 0 }
 
     - register:
       - name: register_1
         offset_address: 0x00
         size: [2]
         type: [indirect, register_file_0.register_0.bit_field_0, [register_file_0.register_1.bit_field_0, 1]]
-        bit_fields:
-        - { name: bit_field_0, bit_assignment: { lsb: 0, width: 8 }, type: rw, initial_value: 0 }
+        <<: *register_file_1_bit_fiels
 
   - register_file:
     - name: register_file_2
