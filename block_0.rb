@@ -142,11 +142,34 @@ register_block {
   register {
     name 'register_13'
     offset_address 0x60
-    type :reserved
+    # same with RW bit field type
+    bit_field { name 'bit_field_0'; bit_assignment width: 2; initial_value 0; type [:custom                                         ] }
+    # same with RO bit filed type
+    bit_field { name 'bit_field_1'; bit_assignment width: 2;                  type [:custom, sw_write: :none                        ] }
+    # same with W1 bit field type
+    bit_field { name 'bit_field_2'; bit_assignment width: 2; initial_value 0; type [:custom, sw_write_once: true                    ] }
+    # same with RWTRG bit field type
+    bit_field { name 'bit_field_3'; bit_assignment width: 2; initial_value 0; type [:custom, write_trigger: true, read_trigger: true] }
+    # same with W1SRC bit field type
+    bit_field { name 'bit_field_4'; bit_assignment width: 2; initial_value 0; type [:custom, sw_write: :set_1  , sw_read: :clear    ] }
+    # same with W1CRS bit field type
+    bit_field { name 'bit_field_5'; bit_assignment width: 2; initial_value 0; type [:custom, sw_write: :clear_1, sw_read: :set      ] }
+    # same with W1S bit field type
+    bit_field { name 'bit_field_6'; bit_assignment width: 2; initial_value 0; type [:custom, sw_write: :set_1  , hw_clear: true     ] }
+    # same with W1C bit field type
+    bit_field { name 'bit_field_7'; bit_assignment width: 2; initial_value 0; type [:custom, sw_write: :clear_1, hw_set: true       ] }
+    # RW bit field with HW write
+    bit_field { name 'bit_field_8'; bit_assignment width: 2; initial_value 0; type [:custom, hw_write: true                         ] }
   }
 
   register {
     name 'register_14'
+    offset_address 0x70
+    type :reserved
+  }
+
+  register {
+    name 'register_15'
     offset_address 0x80
     size 32
     type :external

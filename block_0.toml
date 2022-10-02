@@ -375,10 +375,58 @@ initial_value   = 0
 [[register_blocks.registers]]
 name            = 'register_13'
 offset_address  = 0x60
-type            = 'reserved'
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_0'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom']
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_1'
+bit_assignment  = { width = 2 }
+type            = ['custom', { sw_write = 'none' }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_2'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { sw_write_once = true }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_3'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { write_trigger = true, read_trigger = true }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_4'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { sw_write = 'set_1', sw_read = 'clear' }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_5'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { sw_write = 'clear_1', sw_read = 'set' }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_6'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { sw_write = 'set_1', hw_clear = true }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_7'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { sw_write = 'clear_1', hw_set = true }]
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_8'
+bit_assignment  = { width = 2 }
+initial_value   = 0
+type            = ['custom', { hw_write = true }]
 
 [[register_blocks.registers]]
 name            = 'register_14'
+offset_address  = 0x70
+type            = 'reserved'
+
+[[register_blocks.registers]]
+name            = 'register_15'
 offset_address  = 0x80
 size            = 32
 type            = 'external'
