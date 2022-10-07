@@ -19,7 +19,8 @@
 |[register_11[2][4]](#block_0-register_11)|0x50|
 |[register_12](#block_0-register_12)|0x50|
 |[register_13](#block_0-register_13)|0x60|
-|[register_14](#block_0-register_14)|0x80|
+|[register_14](#block_0-register_14)|0x70|
+|[register_15](#block_0-register_15)|0x80|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -228,9 +229,28 @@
 * offset_address
     * 0x60
 * type
-    * reserved
+    * default
+
+|name|bit_assignments|type|initial_value|reference|comment|
+|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[1:0]|custom<br>sw_read: default<br>sw_write: default<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: false|0x0|||
+|bit_field_1|[3:2]|custom<br>sw_read: default<br>sw_write: none<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: false||||
+|bit_field_2|[5:4]|custom<br>sw_read: default<br>sw_write: default<br>sw_write_once: true<br>hw_write: false<br>hw_set: false<br>hw_clear: false|0x0|||
+|bit_field_3|[7:6]|custom<br>sw_read: default<br>sw_write: default<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: false|0x0|||
+|bit_field_4|[9:8]|custom<br>sw_read: clear<br>sw_write: set_1<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: false|0x0|||
+|bit_field_5|[11:10]|custom<br>sw_read: set<br>sw_write: clear_1<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: false|0x0|||
+|bit_field_6|[13:12]|custom<br>sw_read: default<br>sw_write: set_1<br>sw_write_once: false<br>hw_write: false<br>hw_set: false<br>hw_clear: true|0x0|||
+|bit_field_7|[15:14]|custom<br>sw_read: default<br>sw_write: clear_1<br>sw_write_once: false<br>hw_write: false<br>hw_set: true<br>hw_clear: false|0x0|||
+|bit_field_8|[17:16]|custom<br>sw_read: default<br>sw_write: default<br>sw_write_once: false<br>hw_write: true<br>hw_set: false<br>hw_clear: false|0x0|||
 
 ### <div id="block_0-register_14"></div>register_14
+
+* offset_address
+    * 0x70
+* type
+    * reserved
+
+### <div id="block_0-register_15"></div>register_15
 
 * offset_address
     * 0x80
