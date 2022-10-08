@@ -60,9 +60,10 @@
 |name|bit_assignments|type|initial_value|reference|comment|
 |:--|:--|:--|:--|:--|:--|
 |bit_field_0|[3:0]|ro||||
-|bit_field_1|[11:8]|ro||||
-|bit_field_2|[23:16]|rof|0xab|||
-|bit_field_3|[31:24]|reserved||||
+|bit_field_1|[15:8]|rof|0xab|||
+|bit_field_2|[19:16]|rol|0x0|||
+|bit_field_3|[23:20]|rol|0x0|register_3.bit_field_3||
+|bit_field_4|[31:24]|reserved||||
 
 ### <div id="block_0-register_3"></div>register_3
 

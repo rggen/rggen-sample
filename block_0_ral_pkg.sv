@@ -37,13 +37,15 @@ package block_0_ral_pkg;
     rand rggen_ral_field bit_field_0;
     rand rggen_ral_field bit_field_1;
     rand rggen_ral_field bit_field_2;
+    rand rggen_ral_field bit_field_3;
     function new(string name);
       super.new(name, 32, 0);
     endfunction
     function void build();
       `rggen_ral_create_field(bit_field_0, 0, 4, "RO", 1, 4'h0, 0, -1, "")
-      `rggen_ral_create_field(bit_field_1, 8, 4, "RO", 1, 4'h0, 0, -1, "")
-      `rggen_ral_create_field(bit_field_2, 16, 8, "RO", 0, 8'hab, 1, -1, "")
+      `rggen_ral_create_field(bit_field_1, 8, 8, "RO", 0, 8'hab, 1, -1, "")
+      `rggen_ral_create_field(bit_field_2, 16, 4, "RO", 1, 4'h0, 1, -1, "")
+      `rggen_ral_create_field(bit_field_3, 20, 4, "RO", 1, 4'h0, 1, -1, "register_3.bit_field_3")
     endfunction
   endclass
   class register_3_reg_model extends rggen_ral_reg;
