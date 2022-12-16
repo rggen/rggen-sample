@@ -17,7 +17,15 @@ register_block {
 
   register {
     name 'register_1'
-    bit_field { bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+    bit_field do
+      bit_assignment lsb: 0, width: 1
+      type :rw
+      initial_value 0
+      labels [
+        { name: :foo, value: 0, comment: 'FOO value' },
+        { name: :bar, value: 1, comment: 'BAR value' }
+      ]
+    end
   }
 
   register {

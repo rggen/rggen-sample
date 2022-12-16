@@ -14,7 +14,11 @@ register_blocks:
 
     - name: register_1
       bit_fields:
-      - { bit_assignment: { lsb: 0, width: 1 }, type: rw, initial_value: 0 }
+      - <<:
+        - { bit_assignment: { lsb: 0, width: 1 }, type: rw, initial_value: 0 }
+        - labels:
+          - { name: foo, value: 0, comment: 'FOO value' }
+          - { name: bar, value: 1, comment: 'BAR value' }
 
     - name: register_2
       offset_address: 0x08
