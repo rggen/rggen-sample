@@ -335,20 +335,20 @@ type            = 'row1trg'
 [[register_blocks.registers]]
 name            = 'register_10'
 offset_address  = 0x30
-size           = 4
+size           = [4, { step = 8 }]
 [[register_blocks.registers.bit_fields]]
 name            = 'bit_field_0'
-bit_assignment  = { lsb = 0, width = 4, sequence_size = 4, step = 16 }
+bit_assignment  = { lsb = 0, width = 2, sequence_size = 4, step = 8 }
 type            = 'rw'
 initial_value   = 0
 [[register_blocks.registers.bit_fields]]
 name            = 'bit_field_1'
-bit_assignment  = { lsb = 4, width = 4, sequence_size = 4, step = 16 }
+bit_assignment  = { lsb = 2, width = 2, sequence_size = 4, step = 8 }
 type            = 'rw'
 initial_value   = { default = 0 }
 [[register_blocks.registers.bit_fields]]
 name            = 'bit_field_2'
-bit_assignment  = { lsb = 8, width = 4, sequence_size = 4, step = 16 }
+bit_assignment  = { lsb = 4, width = 2, sequence_size = 4, step = 8 }
 type            = 'rw'
 initial_value   = [0, 1, 2, 3]
 
