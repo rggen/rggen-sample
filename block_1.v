@@ -85,8 +85,7 @@ module block_1 #(
         .ADDRESS_WIDTH  (7),
         .OFFSET_ADDRESS (7'h00),
         .BUS_WIDTH      (32),
-        .DATA_WIDTH     (32),
-        .REGISTER_INDEX (0)
+        .DATA_WIDTH     (32)
       ) u_register (
         .i_clk                  (i_clk),
         .i_rst_n                (i_rst_n),
@@ -150,8 +149,7 @@ module block_1 #(
         .ADDRESS_WIDTH  (7),
         .OFFSET_ADDRESS (7'h04),
         .BUS_WIDTH      (32),
-        .DATA_WIDTH     (32),
-        .REGISTER_INDEX (0)
+        .DATA_WIDTH     (32)
       ) u_register (
         .i_clk                  (i_clk),
         .i_rst_n                (i_rst_n),
@@ -368,10 +366,9 @@ module block_1 #(
                 .READABLE       (1),
                 .WRITABLE       (1),
                 .ADDRESS_WIDTH  (7),
-                .OFFSET_ADDRESS (7'h20+28*(i)),
+                .OFFSET_ADDRESS (7'h20+28*i+4*(3*j+k)),
                 .BUS_WIDTH      (32),
-                .DATA_WIDTH     (32),
-                .REGISTER_INDEX (3*j+k)
+                .DATA_WIDTH     (32)
               ) u_register (
                 .i_clk                  (i_clk),
                 .i_rst_n                (i_rst_n),
@@ -380,11 +377,11 @@ module block_1 #(
                 .i_register_address     (w_register_address),
                 .i_register_write_data  (w_register_write_data),
                 .i_register_strobe      (w_register_strobe),
-                .o_register_active      (w_register_active[1*(6+7*(i)+3*j+k)+:1]),
-                .o_register_ready       (w_register_ready[1*(6+7*(i)+3*j+k)+:1]),
-                .o_register_status      (w_register_status[2*(6+7*(i)+3*j+k)+:2]),
-                .o_register_read_data   (w_register_read_data[32*(6+7*(i)+3*j+k)+:32]),
-                .o_register_value       (w_register_value[32*(6+7*(i)+3*j+k)+0+:32]),
+                .o_register_active      (w_register_active[1*(6+7*i+3*j+k)+:1]),
+                .o_register_ready       (w_register_ready[1*(6+7*i+3*j+k)+:1]),
+                .o_register_status      (w_register_status[2*(6+7*i+3*j+k)+:2]),
+                .o_register_read_data   (w_register_read_data[32*(6+7*i+3*j+k)+:32]),
+                .o_register_value       (w_register_value[32*(6+7*i+3*j+k)+0+:32]),
                 .o_bit_field_valid      (w_bit_field_valid),
                 .o_bit_field_read_mask  (w_bit_field_read_mask),
                 .o_bit_field_write_mask (w_bit_field_write_mask),
@@ -465,7 +462,7 @@ module block_1 #(
                     .i_rst_n            (i_rst_n),
                     .i_sw_valid         (w_bit_field_valid),
                     .i_sw_read_mask     (w_bit_field_read_mask[16+4*l+:4]),
-                    .i_sw_write_enable  (w_register_value[32*(6+7*(i)+6)+0+1*l+:1]),
+                    .i_sw_write_enable  (w_register_value[32*(6+7*i+6)+0+1*l+:1]),
                     .i_sw_write_mask    (w_bit_field_write_mask[16+4*l+:4]),
                     .i_sw_write_data    (w_bit_field_write_data[16+4*l+:4]),
                     .o_sw_read_data     (w_bit_field_read_data[16+4*l+:4]),
@@ -498,10 +495,9 @@ module block_1 #(
             .READABLE       (1),
             .WRITABLE       (1),
             .ADDRESS_WIDTH  (7),
-            .OFFSET_ADDRESS (7'h20+28*(i)+7'h18),
+            .OFFSET_ADDRESS (7'h20+28*i+7'h18),
             .BUS_WIDTH      (32),
-            .DATA_WIDTH     (32),
-            .REGISTER_INDEX (0)
+            .DATA_WIDTH     (32)
           ) u_register (
             .i_clk                  (i_clk),
             .i_rst_n                (i_rst_n),
@@ -510,11 +506,11 @@ module block_1 #(
             .i_register_address     (w_register_address),
             .i_register_write_data  (w_register_write_data),
             .i_register_strobe      (w_register_strobe),
-            .o_register_active      (w_register_active[1*(6+7*(i)+6)+:1]),
-            .o_register_ready       (w_register_ready[1*(6+7*(i)+6)+:1]),
-            .o_register_status      (w_register_status[2*(6+7*(i)+6)+:2]),
-            .o_register_read_data   (w_register_read_data[32*(6+7*(i)+6)+:32]),
-            .o_register_value       (w_register_value[32*(6+7*(i)+6)+0+:32]),
+            .o_register_active      (w_register_active[1*(6+7*i+6)+:1]),
+            .o_register_ready       (w_register_ready[1*(6+7*i+6)+:1]),
+            .o_register_status      (w_register_status[2*(6+7*i+6)+:2]),
+            .o_register_read_data   (w_register_read_data[32*(6+7*i+6)+:32]),
+            .o_register_value       (w_register_value[32*(6+7*i+6)+0+:32]),
             .o_bit_field_valid      (w_bit_field_valid),
             .o_bit_field_read_mask  (w_bit_field_read_mask),
             .o_bit_field_write_mask (w_bit_field_write_mask),
