@@ -104,8 +104,7 @@ begin
           ADDRESS_WIDTH   => 7,
           OFFSET_ADDRESS  => x"00",
           BUS_WIDTH       => 32,
-          DATA_WIDTH      => 32,
-          REGISTER_INDEX  => 0
+          DATA_WIDTH      => 32
         )
         port map (
           i_clk                   => i_clk,
@@ -180,8 +179,7 @@ begin
           ADDRESS_WIDTH   => 7,
           OFFSET_ADDRESS  => x"04",
           BUS_WIDTH       => 32,
-          DATA_WIDTH      => 32,
-          REGISTER_INDEX  => 0
+          DATA_WIDTH      => 32
         )
         port map (
           i_clk                   => i_clk,
@@ -434,10 +432,9 @@ begin
                   READABLE        => true,
                   WRITABLE        => true,
                   ADDRESS_WIDTH   => 7,
-                  OFFSET_ADDRESS  => x"20"+28*(i),
+                  OFFSET_ADDRESS  => x"20"+28*i+4*(3*j+k),
                   BUS_WIDTH       => 32,
-                  DATA_WIDTH      => 32,
-                  REGISTER_INDEX  => 3*j+k
+                  DATA_WIDTH      => 32
                 )
                 port map (
                   i_clk                   => i_clk,
@@ -447,11 +444,11 @@ begin
                   i_register_address      => register_address,
                   i_register_write_data   => register_write_data,
                   i_register_strobe       => register_strobe,
-                  o_register_active       => register_active(6+7*(i)+3*j+k),
-                  o_register_ready        => register_ready(6+7*(i)+3*j+k),
-                  o_register_status       => register_status(2*(6+7*(i)+3*j+k)+1 downto 2*(6+7*(i)+3*j+k)),
-                  o_register_read_data    => register_read_data(32*(6+7*(i)+3*j+k)+31 downto 32*(6+7*(i)+3*j+k)),
-                  o_register_value        => register_value(32*(6+7*(i)+3*j+k)+0+31 downto 32*(6+7*(i)+3*j+k)+0),
+                  o_register_active       => register_active(6+7*i+3*j+k),
+                  o_register_ready        => register_ready(6+7*i+3*j+k),
+                  o_register_status       => register_status(2*(6+7*i+3*j+k)+1 downto 2*(6+7*i+3*j+k)),
+                  o_register_read_data    => register_read_data(32*(6+7*i+3*j+k)+31 downto 32*(6+7*i+3*j+k)),
+                  o_register_value        => register_value(32*(6+7*i+3*j+k)+0+31 downto 32*(6+7*i+3*j+k)+0),
                   o_bit_field_valid       => bit_field_valid,
                   o_bit_field_read_mask   => bit_field_read_mask,
                   o_bit_field_write_mask  => bit_field_write_mask,
@@ -541,7 +538,7 @@ begin
                       i_rst_n           => i_rst_n,
                       i_sw_valid        => bit_field_valid,
                       i_sw_read_mask    => bit_field_read_mask(16+4*l+3 downto 16+4*l),
-                      i_sw_write_enable => register_value(32*(6+7*(i)+6)+0+1*l+0 downto 32*(6+7*(i)+6)+0+1*l),
+                      i_sw_write_enable => register_value(32*(6+7*i+6)+0+1*l+0 downto 32*(6+7*i+6)+0+1*l),
                       i_sw_write_mask   => bit_field_write_mask(16+4*l+3 downto 16+4*l),
                       i_sw_write_data   => bit_field_write_data(16+4*l+3 downto 16+4*l),
                       o_sw_read_data    => bit_field_read_data(16+4*l+3 downto 16+4*l),
@@ -581,10 +578,9 @@ begin
               READABLE        => true,
               WRITABLE        => true,
               ADDRESS_WIDTH   => 7,
-              OFFSET_ADDRESS  => x"20"+28*(i)+x"18",
+              OFFSET_ADDRESS  => x"20"+28*i+x"18",
               BUS_WIDTH       => 32,
-              DATA_WIDTH      => 32,
-              REGISTER_INDEX  => 0
+              DATA_WIDTH      => 32
             )
             port map (
               i_clk                   => i_clk,
@@ -594,11 +590,11 @@ begin
               i_register_address      => register_address,
               i_register_write_data   => register_write_data,
               i_register_strobe       => register_strobe,
-              o_register_active       => register_active(6+7*(i)+6),
-              o_register_ready        => register_ready(6+7*(i)+6),
-              o_register_status       => register_status(2*(6+7*(i)+6)+1 downto 2*(6+7*(i)+6)),
-              o_register_read_data    => register_read_data(32*(6+7*(i)+6)+31 downto 32*(6+7*(i)+6)),
-              o_register_value        => register_value(32*(6+7*(i)+6)+0+31 downto 32*(6+7*(i)+6)+0),
+              o_register_active       => register_active(6+7*i+6),
+              o_register_ready        => register_ready(6+7*i+6),
+              o_register_status       => register_status(2*(6+7*i+6)+1 downto 2*(6+7*i+6)),
+              o_register_read_data    => register_read_data(32*(6+7*i+6)+31 downto 32*(6+7*i+6)),
+              o_register_value        => register_value(32*(6+7*i+6)+0+31 downto 32*(6+7*i+6)+0),
               o_bit_field_valid       => bit_field_valid,
               o_bit_field_read_mask   => bit_field_read_mask,
               o_bit_field_write_mask  => bit_field_write_mask,
