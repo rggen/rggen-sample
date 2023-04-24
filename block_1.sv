@@ -264,7 +264,7 @@ module block_1
                 .READABLE       (1),
                 .WRITABLE       (1),
                 .ADDRESS_WIDTH  (7),
-                .OFFSET_ADDRESS (7'h20+28*i+4*(3*j+k)),
+                .OFFSET_ADDRESS (7'h20+32*i+4*(3*j+k)),
                 .BUS_WIDTH      (32),
                 .DATA_WIDTH     (32)
               ) u_register (
@@ -368,7 +368,7 @@ module block_1
             .READABLE       (1),
             .WRITABLE       (1),
             .ADDRESS_WIDTH  (7),
-            .OFFSET_ADDRESS (7'h20+28*i+7'h18),
+            .OFFSET_ADDRESS (7'h20+32*i+7'h18),
             .BUS_WIDTH      (32),
             .DATA_WIDTH     (32)
           ) u_register (

@@ -55,7 +55,7 @@ register_block {
   register_file {
     name 'register_file_2'
     offset_address 0x20
-    size [2]
+    size [2, step: 32]
     register_file {
       name 'register_file_0'
       register {

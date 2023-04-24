@@ -61,7 +61,7 @@ initial_value   = 0
 [[register_blocks.register_files]]
 name            = 'register_file_2'
 offset_address  = 0x20
-size            = [2]
+size            = [2, { step = 32 }]
 
 [[register_blocks.register_files.register_files]]
 name            = 'register_file_0'

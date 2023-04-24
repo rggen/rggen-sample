@@ -432,7 +432,7 @@ begin
                   READABLE        => true,
                   WRITABLE        => true,
                   ADDRESS_WIDTH   => 7,
-                  OFFSET_ADDRESS  => x"20"+28*i+4*(3*j+k),
+                  OFFSET_ADDRESS  => x"20"+32*i+4*(3*j+k),
                   BUS_WIDTH       => 32,
                   DATA_WIDTH      => 32
                 )
@@ -578,7 +578,7 @@ begin
               READABLE        => true,
               WRITABLE        => true,
               ADDRESS_WIDTH   => 7,
-              OFFSET_ADDRESS  => x"20"+28*i+x"18",
+              OFFSET_ADDRESS  => x"20"+32*i+x"18",
               BUS_WIDTH       => 32,
               DATA_WIDTH      => 32
             )
