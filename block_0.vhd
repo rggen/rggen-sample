@@ -10,6 +10,7 @@ entity block_0 is
     PRE_DECODE: boolean := false;
     BASE_ADDRESS: unsigned := x"0";
     ERROR_STATUS: boolean := false;
+    INSERT_SLICER: boolean := false;
     REGISTER_10_BIT_FIELD_1_INITIAL_VALUE: unsigned(7 downto 0) := repeat(x"0", 2, 4)
   );
   port (
@@ -166,7 +167,8 @@ begin
       PRE_DECODE          => PRE_DECODE,
       BASE_ADDRESS        => BASE_ADDRESS,
       BYTE_SIZE           => 256,
-      ERROR_STATUS        => ERROR_STATUS
+      ERROR_STATUS        => ERROR_STATUS,
+      INSERT_SLICER       => INSERT_SLICER
     )
     port map (
       i_clk                 => i_clk,

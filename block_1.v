@@ -4,7 +4,8 @@ module block_1 #(
   parameter PRE_DECODE = 0,
   parameter [ADDRESS_WIDTH-1:0] BASE_ADDRESS = 0,
   parameter ERROR_STATUS = 0,
-  parameter [31:0] DEFAULT_READ_DATA = 0
+  parameter [31:0] DEFAULT_READ_DATA = 0,
+  parameter INSERT_SLICER = 0
 )(
   input i_clk,
   input i_rst_n,
@@ -46,7 +47,8 @@ module block_1 #(
     .BASE_ADDRESS         (BASE_ADDRESS),
     .BYTE_SIZE            (128),
     .ERROR_STATUS         (ERROR_STATUS),
-    .DEFAULT_READ_DATA    (DEFAULT_READ_DATA)
+    .DEFAULT_READ_DATA    (DEFAULT_READ_DATA),
+    .INSERT_SLICER        (INSERT_SLICER)
   ) u_adapter (
     .i_clk                  (i_clk),
     .i_rst_n                (i_rst_n),

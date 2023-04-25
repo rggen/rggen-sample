@@ -26,7 +26,8 @@ module block_1
   parameter bit PRE_DECODE = 0,
   parameter bit [ADDRESS_WIDTH-1:0] BASE_ADDRESS = '0,
   parameter bit ERROR_STATUS = 0,
-  parameter bit [31:0] DEFAULT_READ_DATA = '0
+  parameter bit [31:0] DEFAULT_READ_DATA = '0,
+  parameter bit INSERT_SLICER = 0
 )(
   input logic i_clk,
   input logic i_rst_n,
@@ -50,7 +51,8 @@ module block_1
     .BASE_ADDRESS         (BASE_ADDRESS),
     .BYTE_SIZE            (128),
     .ERROR_STATUS         (ERROR_STATUS),
-    .DEFAULT_READ_DATA    (DEFAULT_READ_DATA)
+    .DEFAULT_READ_DATA    (DEFAULT_READ_DATA),
+    .INSERT_SLICER        (INSERT_SLICER)
   ) u_adapter (
     .i_clk        (i_clk),
     .i_rst_n      (i_rst_n),

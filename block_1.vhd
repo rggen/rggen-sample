@@ -9,7 +9,8 @@ entity block_1 is
     ADDRESS_WIDTH: positive := 7;
     PRE_DECODE: boolean := false;
     BASE_ADDRESS: unsigned := x"0";
-    ERROR_STATUS: boolean := false
+    ERROR_STATUS: boolean := false;
+    INSERT_SLICER: boolean := false
   );
   port (
     i_clk: in std_logic;
@@ -56,7 +57,8 @@ begin
       PRE_DECODE          => PRE_DECODE,
       BASE_ADDRESS        => BASE_ADDRESS,
       BYTE_SIZE           => 128,
-      ERROR_STATUS        => ERROR_STATUS
+      ERROR_STATUS        => ERROR_STATUS,
+      INSERT_SLICER       => INSERT_SLICER
     )
     port map (
       i_clk                 => i_clk,
