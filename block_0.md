@@ -191,9 +191,9 @@
 
 |name|bit_assignments|type|initial_value|reference|labels|comment|
 |:--|:--|:--|:--|:--|:--|:--|
-|bit_field_0[4]|[3:0]<br>[19:16]<br>[35:32]<br>[51:48]|rw|0x0||||
-|bit_field_1[4]|[7:4]<br>[23:20]<br>[39:36]<br>[55:52]|rw|default: 0x0||||
-|bit_field_2[4]|[11:8]<br>[27:24]<br>[43:40]<br>[59:56]|rw|0x0<br>0x1<br>0x2<br>0x3||||
+|bit_field_0[4]|[1:0]<br>[9:8]<br>[17:16]<br>[25:24]|rw|0x0||||
+|bit_field_1[4]|[3:2]<br>[11:10]<br>[19:18]<br>[27:26]|rw|default: 0x0||||
+|bit_field_2[4]|[5:4]<br>[13:12]<br>[21:20]<br>[29:28]|rw|0x0<br>0x1<br>0x2<br>0x3||||
 
 ### <div id="block_0-register_11"></div>register_11[2][4]
 
