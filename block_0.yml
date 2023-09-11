@@ -159,9 +159,21 @@ register_blocks:
 
     - name: register_14
       offset_address: 0x70
-      type: reserved
+      type: rw
+      bit_fields:
+      - { name: bit_field_0, bit_assignment: { width: 1 }, type: ro }
 
     - name: register_15
+      offset_address: 0x74
+      type: rw
+      bit_fields:
+      - { name: bit_field_0, bit_assignment: { width: 1 }, type: wo, initial_value: 0 }
+
+    - name: register_16
+      offset_address: 0x78
+      type: reserved
+
+    - name: register_17
       offset_address: 0x80
       size: 32
       type: external

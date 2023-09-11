@@ -20,7 +20,9 @@
 |[register_12](#block_0-register_12)|0x50|
 |[register_13](#block_0-register_13)|0x60|
 |[register_14](#block_0-register_14)|0x70|
-|[register_15](#block_0-register_15)|0x80|
+|[register_15](#block_0-register_15)|0x74|
+|[register_16](#block_0-register_16)|0x78|
+|[register_17](#block_0-register_17)|0x80|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -256,9 +258,31 @@
 * offset_address
     * 0x70
 * type
-    * reserved
+    * rw
+
+|name|bit_assignments|type|initial_value|reference|labels|comment|
+|:--|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[0]|ro|||||
 
 ### <div id="block_0-register_15"></div>register_15
+
+* offset_address
+    * 0x74
+* type
+    * rw
+
+|name|bit_assignments|type|initial_value|reference|labels|comment|
+|:--|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[0]|wo|0x0||||
+
+### <div id="block_0-register_16"></div>register_16
+
+* offset_address
+    * 0x78
+* type
+    * reserved
+
+### <div id="block_0-register_17"></div>register_17
 
 * offset_address
     * 0x80

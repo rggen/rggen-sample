@@ -174,11 +174,25 @@ register_block {
   register {
     name 'register_14'
     offset_address 0x70
-    type :reserved
+    type :rw
+    bit_field { name 'bit_field_0'; bit_assignment width: 1; type :ro }
   }
 
   register {
     name 'register_15'
+    offset_address 0x74
+    type :rw
+    bit_field { name 'bit_field_0'; bit_assignment width: 1; type :wo; initial_value 0 }
+  }
+
+  register {
+    name 'register_16'
+    offset_address 0x78
+    type :reserved
+  }
+
+  register {
+    name 'register_17'
     offset_address 0x80
     size 32
     type :external

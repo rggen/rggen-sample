@@ -291,9 +291,21 @@
 #define BLOCK_0_REGISTER_13_BYTE_WIDTH 4
 #define BLOCK_0_REGISTER_13_BYTE_SIZE 4
 #define BLOCK_0_REGISTER_13_BYTE_OFFSET 0x60
+#define BLOCK_0_REGISTER_14_BIT_FIELD_0_BIT_WIDTH 1
+#define BLOCK_0_REGISTER_14_BIT_FIELD_0_BIT_MASK 0x1
+#define BLOCK_0_REGISTER_14_BIT_FIELD_0_BIT_OFFSET 0
+#define BLOCK_0_REGISTER_14_BYTE_WIDTH 4
+#define BLOCK_0_REGISTER_14_BYTE_SIZE 4
+#define BLOCK_0_REGISTER_14_BYTE_OFFSET 0x70
+#define BLOCK_0_REGISTER_15_BIT_FIELD_0_BIT_WIDTH 1
+#define BLOCK_0_REGISTER_15_BIT_FIELD_0_BIT_MASK 0x1
+#define BLOCK_0_REGISTER_15_BIT_FIELD_0_BIT_OFFSET 0
 #define BLOCK_0_REGISTER_15_BYTE_WIDTH 4
-#define BLOCK_0_REGISTER_15_BYTE_SIZE 128
-#define BLOCK_0_REGISTER_15_BYTE_OFFSET 0x80
+#define BLOCK_0_REGISTER_15_BYTE_SIZE 4
+#define BLOCK_0_REGISTER_15_BYTE_OFFSET 0x74
+#define BLOCK_0_REGISTER_17_BYTE_WIDTH 4
+#define BLOCK_0_REGISTER_17_BYTE_SIZE 128
+#define BLOCK_0_REGISTER_17_BYTE_OFFSET 0x80
 typedef union {
   uint32_t register_2;
   uint32_t register_3;
@@ -321,10 +333,10 @@ typedef struct {
   uint32_t __reserved_0x64;
   uint32_t __reserved_0x68;
   uint32_t __reserved_0x6c;
-  uint32_t __reserved_0x70;
-  uint32_t __reserved_0x74;
+  uint32_t register_14;
+  uint32_t register_15;
   uint32_t __reserved_0x78;
   uint32_t __reserved_0x7c;
-  uint32_t register_15[32];
+  uint32_t register_17[32];
 } block_0_t;
 #endif

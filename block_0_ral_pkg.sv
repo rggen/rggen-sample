@@ -268,9 +268,27 @@ package block_0_ral_pkg;
       `rggen_ral_create_field(bit_field_8, 16, 2, "CUSTOM", 1, 2'h0, 1, -1, "")
     endfunction
   endclass
+  class register_14_reg_model extends rggen_ral_reg;
+    rand rggen_ral_field bit_field_0;
+    function new(string name);
+      super.new(name, 32, 0);
+    endfunction
+    function void build();
+      `rggen_ral_create_field(bit_field_0, 0, 1, "RO", 1, 1'h0, 0, -1, "")
+    endfunction
+  endclass
+  class register_15_reg_model extends rggen_ral_reg;
+    rand rggen_ral_field bit_field_0;
+    function new(string name);
+      super.new(name, 32, 0);
+    endfunction
+    function void build();
+      `rggen_ral_create_field(bit_field_0, 0, 1, "WO", 0, 1'h0, 1, -1, "")
+    endfunction
+  endclass
   class block_0_block_model #(
-    type REGISTER_15 = rggen_ral_block,
-    bit INTEGRATE_REGISTER_15 = 1
+    type REGISTER_17 = rggen_ral_block,
+    bit INTEGRATE_REGISTER_17 = 1
   ) extends rggen_ral_block;
     rand register_0_reg_model register_0;
     rand register_1_reg_model register_1;
@@ -286,7 +304,9 @@ package block_0_ral_pkg;
     rand register_11_reg_model register_11[2][4];
     rand register_12_reg_model register_12;
     rand register_13_reg_model register_13;
-    rand REGISTER_15 register_15;
+    rand register_14_reg_model register_14;
+    rand register_15_reg_model register_15;
+    rand REGISTER_17 register_17;
     function new(string name);
       super.new(name, 4, 0);
     endfunction
@@ -315,7 +335,9 @@ package block_0_ral_pkg;
       `rggen_ral_create_reg(register_11[1][3], '{1, 3}, 8'h50, "RW", "g_register_11.g[1].g[3].u_register")
       `rggen_ral_create_reg(register_12, '{}, 8'h50, "RW", "g_register_12.u_register")
       `rggen_ral_create_reg(register_13, '{}, 8'h60, "RW", "g_register_13.u_register")
-      `rggen_ral_create_block(register_15, 8'h80, this, INTEGRATE_REGISTER_15)
+      `rggen_ral_create_reg(register_14, '{}, 8'h70, "RW", "g_register_14.u_register")
+      `rggen_ral_create_reg(register_15, '{}, 8'h74, "RW", "g_register_15.u_register")
+      `rggen_ral_create_block(register_17, 8'h80, this, INTEGRATE_REGISTER_17)
     endfunction
   endclass
 endpackage
