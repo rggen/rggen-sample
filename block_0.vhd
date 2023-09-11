@@ -153,7 +153,7 @@ architecture rtl of block_0 is
   signal register_access: std_logic_vector(1 downto 0);
   signal register_address: std_logic_vector(7 downto 0);
   signal register_write_data: std_logic_vector(31 downto 0);
-  signal register_strobe: std_logic_vector(3 downto 0);
+  signal register_strobe: std_logic_vector(31 downto 0);
   signal register_active: std_logic_vector(26 downto 0);
   signal register_ready: std_logic_vector(26 downto 0);
   signal register_status: std_logic_vector(53 downto 0);

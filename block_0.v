@@ -144,7 +144,7 @@ module block_0 #(
   wire [1:0] w_register_access;
   wire [7:0] w_register_address;
   wire [31:0] w_register_write_data;
-  wire [3:0] w_register_strobe;
+  wire [31:0] w_register_strobe;
   wire [26:0] w_register_active;
   wire [26:0] w_register_ready;
   wire [53:0] w_register_status;
