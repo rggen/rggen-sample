@@ -6,7 +6,8 @@ module block_0 #(
   parameter ERROR_STATUS = 0,
   parameter [31:0] DEFAULT_READ_DATA = 0,
   parameter INSERT_SLICER = 0,
-  parameter [7:0] REGISTER_10_BIT_FIELD_1_INITIAL_VALUE = {4{2'h0}}
+  parameter [7:0] REGISTER_10_BIT_FIELD_1_INITIAL_VALUE = {4{2'h0}},
+  parameter REGISTER_17_STROBE_WIDTH = 4
 )(
   input i_clk,
   input i_rst_n,
@@ -135,7 +136,7 @@ module block_0 #(
   output [1:0] o_register_17_access,
   output [7:0] o_register_17_address,
   output [31:0] o_register_17_data,
-  output [3:0] o_register_17_strobe,
+  output [REGISTER_17_STROBE_WIDTH-1:0] o_register_17_strobe,
   input i_register_17_ready,
   input [1:0] i_register_17_status,
   input [31:0] i_register_17_data
@@ -2851,6 +2852,7 @@ module block_0 #(
     rggen_external_register #(
       .ADDRESS_WIDTH  (8),
       .BUS_WIDTH      (32),
+      .STROBE_WIDTH   (REGISTER_17_STROBE_WIDTH),
       .START_ADDRESS  (8'h80),
       .BYTE_SIZE      (128)
     ) u_register (

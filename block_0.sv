@@ -28,7 +28,8 @@ module block_0
   parameter bit ERROR_STATUS = 0,
   parameter bit [31:0] DEFAULT_READ_DATA = '0,
   parameter bit INSERT_SLICER = 0,
-  parameter bit [3:0][1:0] REGISTER_10_BIT_FIELD_1_INITIAL_VALUE = {4{2'h0}}
+  parameter bit [3:0][1:0] REGISTER_10_BIT_FIELD_1_INITIAL_VALUE = {4{2'h0}},
+  parameter int REGISTER_17_STROBE_WIDTH = 4
 )(
   input logic i_clk,
   input logic i_rst_n,
@@ -2380,6 +2381,7 @@ module block_0
       .ADDRESS_WIDTH  (8),
       .BUS_WIDTH      (32),
       .VALUE_WIDTH    (64),
+      .STROBE_WIDTH   (REGISTER_17_STROBE_WIDTH),
       .START_ADDRESS  (8'h80),
       .BYTE_SIZE      (128)
     ) u_register (

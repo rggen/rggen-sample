@@ -11,7 +11,8 @@ entity block_0 is
     BASE_ADDRESS: unsigned := x"0";
     ERROR_STATUS: boolean := false;
     INSERT_SLICER: boolean := false;
-    REGISTER_10_BIT_FIELD_1_INITIAL_VALUE: unsigned(7 downto 0) := repeat(x"0", 2, 4)
+    REGISTER_10_BIT_FIELD_1_INITIAL_VALUE: unsigned(7 downto 0) := repeat(x"0", 2, 4);
+    REGISTER_17_STROBE_WIDTH: positive := 4
   );
   port (
     i_clk: in std_logic;
@@ -141,7 +142,7 @@ entity block_0 is
     o_register_17_access: out std_logic_vector(1 downto 0);
     o_register_17_address: out std_logic_vector(7 downto 0);
     o_register_17_data: out std_logic_vector(31 downto 0);
-    o_register_17_strobe: out std_logic_vector(3 downto 0);
+    o_register_17_strobe: out std_logic_vector(REGISTER_17_STROBE_WIDTH-1 downto 0);
     i_register_17_ready: in std_logic;
     i_register_17_status: in std_logic_vector(1 downto 0);
     i_register_17_data: in std_logic_vector(31 downto 0)
@@ -3245,6 +3246,7 @@ begin
       generic map (
         ADDRESS_WIDTH => 8,
         BUS_WIDTH     => 32,
+        STROBE_WIDTH  => REGISTER_17_STROBE_WIDTH,
         START_ADDRESS => x"80",
         BYTE_SIZE     => 128
       )
