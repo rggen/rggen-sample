@@ -37,7 +37,7 @@ entity block_0 is
     i_register_0_bit_field_6: in std_logic_vector(1 downto 0);
     o_register_1: out std_logic_vector(0 downto 0);
     i_register_2_bit_field_0: in std_logic_vector(3 downto 0);
-    i_register_2_bit_field_2_latch: in std_logic_vector(0 downto 0);
+    i_register_2_bit_field_2_valid: in std_logic_vector(0 downto 0);
     i_register_2_bit_field_2: in std_logic_vector(3 downto 0);
     o_register_2_bit_field_2: out std_logic_vector(3 downto 0);
     i_register_2_bit_field_3: in std_logic_vector(3 downto 0);
@@ -56,7 +56,7 @@ entity block_0 is
     i_register_5_bit_field_0_clear: in std_logic_vector(0 downto 0);
     o_register_5_bit_field_0: out std_logic_vector(1 downto 0);
     o_register_5_bit_field_1: out std_logic_vector(1 downto 0);
-    i_register_5_bit_field_2_set: in std_logic_vector(0 downto 0);
+    i_register_5_bit_field_2_valid: in std_logic_vector(0 downto 0);
     i_register_5_bit_field_2: in std_logic_vector(1 downto 0);
     o_register_5_bit_field_2: out std_logic_vector(1 downto 0);
     i_register_5_bit_field_3: in std_logic_vector(1 downto 0);
@@ -654,7 +654,7 @@ begin
           o_sw_value        => bit_field_value(19 downto 16),
           o_write_trigger   => open,
           o_read_trigger    => open,
-          i_hw_write_enable => i_register_2_bit_field_2_latch,
+          i_hw_write_enable => i_register_2_bit_field_2_valid,
           i_hw_write_data   => i_register_2_bit_field_2,
           i_hw_set          => (others => '0'),
           i_hw_clear        => (others => '0'),
@@ -1138,7 +1138,7 @@ begin
           o_sw_value        => bit_field_value(5 downto 4),
           o_write_trigger   => open,
           o_read_trigger    => open,
-          i_hw_write_enable => i_register_5_bit_field_2_set,
+          i_hw_write_enable => i_register_5_bit_field_2_valid,
           i_hw_write_data   => i_register_5_bit_field_2,
           i_hw_set          => (others => '0'),
           i_hw_clear        => (others => '0'),

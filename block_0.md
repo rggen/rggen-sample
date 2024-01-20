@@ -63,8 +63,8 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[3:0]|ro|||||
 |bit_field_1|[15:8]|rof|0xab||||
-|bit_field_2|[19:16]|rol|0x0||||
-|bit_field_3|[23:20]|rol|0x0|register_3.bit_field_3|||
+|bit_field_2|[19:16]|rohw|0x0||||
+|bit_field_3|[23:20]|rohw|0x0|register_3.bit_field_3|||
 |bit_field_4|[31:24]|reserved|||||
 
 ### <div id="block_0-register_3"></div>register_3
@@ -106,8 +106,8 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[1:0]|rwc|0x0||||
 |bit_field_1|[3:2]|rwc|0x0|register_3.bit_field_2|||
-|bit_field_2|[5:4]|rws|0x0||||
-|bit_field_3|[7:6]|rws|0x0|register_3.bit_field_3|||
+|bit_field_2|[5:4]|rwhw|0x0||||
+|bit_field_3|[7:6]|rwhw|0x0|register_3.bit_field_3|||
 |bit_field_4|[9:8]|rwe|0x0||||
 |bit_field_5|[11:10]|rwe|0x0|register_0.bit_field_2|||
 |bit_field_6|[13:12]|rwe|0x0|register_1|||
