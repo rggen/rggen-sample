@@ -106,14 +106,16 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[1:0]|rwc|0x0||||
 |bit_field_1|[3:2]|rwc|0x0|register_3.bit_field_2|||
-|bit_field_2|[5:4]|rwhw|0x0||||
-|bit_field_3|[7:6]|rwhw|0x0|register_3.bit_field_3|||
-|bit_field_4|[9:8]|rwe|0x0||||
-|bit_field_5|[11:10]|rwe|0x0|register_0.bit_field_2|||
-|bit_field_6|[13:12]|rwe|0x0|register_1|||
-|bit_field_7|[17:16]|rwl|0x0||||
-|bit_field_8|[19:18]|rwl|0x0|register_0.bit_field_2|||
-|bit_field_9|[21:20]|rwl|0x0|register_1|||
+|bit_field_2|[5:4]|rws|0x0||||
+|bit_field_3|[7:6]|rws|0x0|register_3.bit_field_2|||
+|bit_field_4|[9:8]|rwhw|0x0||||
+|bit_field_5|[11:10]|rwhw|0x0|register_3.bit_field_3|||
+|bit_field_6|[13:12]|rwe|0x0||||
+|bit_field_7|[15:14]|rwe|0x0|register_0.bit_field_2|||
+|bit_field_8|[17:16]|rwe|0x0|register_1|||
+|bit_field_9|[21:20]|rwl|0x0||||
+|bit_field_10|[23:22]|rwl|0x0|register_0.bit_field_2|||
+|bit_field_11|[25:24]|rwl|0x0|register_1|||
 
 ### <div id="block_0-register_6"></div>register_6
 
