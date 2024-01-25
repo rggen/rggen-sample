@@ -79,7 +79,7 @@ module uart_csr #(
   wire [1:0] w_register_access;
   wire [4:0] w_register_address;
   wire [31:0] w_register_write_data;
-  wire [3:0] w_register_strobe;
+  wire [31:0] w_register_strobe;
   wire [11:0] w_register_active;
   wire [11:0] w_register_ready;
   wire [23:0] w_register_status;
