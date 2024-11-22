@@ -108,9 +108,9 @@ module uart_csr
   );
   generate if (1) begin : g_rbr
     rggen_bit_field_if #(32) bit_field_if();
-    logic indirect_index;
+    logic indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, bit_field_if)
-    assign indirect_index = {register_if[5].value[7+:1]};
+    assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (0),
@@ -119,13 +119,12 @@ module uart_csr
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
       .VALUE_WIDTH          (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk            (i_clk),
       .i_rst_n          (i_rst_n),
       .register_if      (register_if[0]),
-      .i_indirect_index (indirect_index),
+      .i_indirect_match (indirect_match),
       .bit_field_if     (bit_field_if)
     );
     if (1) begin : g_rbr
@@ -156,9 +155,9 @@ module uart_csr
   end endgenerate
   generate if (1) begin : g_thr
     rggen_bit_field_if #(32) bit_field_if();
-    logic indirect_index;
+    logic indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, bit_field_if)
-    assign indirect_index = {register_if[5].value[7+:1]};
+    assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (0),
       .WRITABLE             (1),
@@ -167,13 +166,12 @@ module uart_csr
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
       .VALUE_WIDTH          (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk            (i_clk),
       .i_rst_n          (i_rst_n),
       .register_if      (register_if[1]),
-      .i_indirect_index (indirect_index),
+      .i_indirect_match (indirect_match),
       .bit_field_if     (bit_field_if)
     );
     if (1) begin : g_thr
@@ -206,9 +204,9 @@ module uart_csr
   end endgenerate
   generate if (1) begin : g_ier
     rggen_bit_field_if #(32) bit_field_if();
-    logic indirect_index;
+    logic indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h0000000f, bit_field_if)
-    assign indirect_index = {register_if[5].value[7+:1]};
+    assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -217,13 +215,12 @@ module uart_csr
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
       .VALUE_WIDTH          (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk            (i_clk),
       .i_rst_n          (i_rst_n),
       .register_if      (register_if[2]),
-      .i_indirect_index (indirect_index),
+      .i_indirect_match (indirect_match),
       .bit_field_if     (bit_field_if)
     );
     if (1) begin : g_erbfi
@@ -1370,9 +1367,9 @@ module uart_csr
   end endgenerate
   generate if (1) begin : g_dll
     rggen_bit_field_if #(32) bit_field_if();
-    logic indirect_index;
+    logic indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, bit_field_if)
-    assign indirect_index = {register_if[5].value[7+:1]};
+    assign indirect_match = register_if[5].value[7+:1] == 1'h1;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -1381,13 +1378,12 @@ module uart_csr
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
       .VALUE_WIDTH          (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h1})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk            (i_clk),
       .i_rst_n          (i_rst_n),
       .register_if      (register_if[10]),
-      .i_indirect_index (indirect_index),
+      .i_indirect_match (indirect_match),
       .bit_field_if     (bit_field_if)
     );
     if (1) begin : g_dll
@@ -1418,9 +1414,9 @@ module uart_csr
   end endgenerate
   generate if (1) begin : g_dlm
     rggen_bit_field_if #(32) bit_field_if();
-    logic indirect_index;
+    logic indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, bit_field_if)
-    assign indirect_index = {register_if[5].value[7+:1]};
+    assign indirect_match = register_if[5].value[7+:1] == 1'h1;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -1429,13 +1425,12 @@ module uart_csr
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
       .VALUE_WIDTH          (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h1})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk            (i_clk),
       .i_rst_n          (i_rst_n),
       .register_if      (register_if[11]),
-      .i_indirect_index (indirect_index),
+      .i_indirect_match (indirect_match),
       .bit_field_if     (bit_field_if)
     );
     if (1) begin : g_dlm

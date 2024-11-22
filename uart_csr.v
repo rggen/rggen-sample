@@ -126,9 +126,9 @@ module uart_csr #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    wire w_indirect_index;
+    wire w_indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, w_bit_field_read_data, w_bit_field_value)
-    assign w_indirect_index = {w_register_value[167+:1]};
+    assign w_indirect_match = w_register_value[167+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (0),
@@ -136,8 +136,7 @@ module uart_csr #(
       .OFFSET_ADDRESS       (5'h00),
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk                  (i_clk),
       .i_rst_n                (i_rst_n),
@@ -151,7 +150,7 @@ module uart_csr #(
       .o_register_status      (w_register_status[0+:2]),
       .o_register_read_data   (w_register_read_data[0+:32]),
       .o_register_value       (w_register_value[0+:32]),
-      .i_indirect_index       (w_indirect_index),
+      .i_indirect_match       (w_indirect_match),
       .o_bit_field_valid      (w_bit_field_valid),
       .o_bit_field_read_mask  (w_bit_field_read_mask),
       .o_bit_field_write_mask (w_bit_field_write_mask),
@@ -195,9 +194,9 @@ module uart_csr #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    wire w_indirect_index;
+    wire w_indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, w_bit_field_read_data, w_bit_field_value)
-    assign w_indirect_index = {w_register_value[167+:1]};
+    assign w_indirect_match = w_register_value[167+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (0),
       .WRITABLE             (1),
@@ -205,8 +204,7 @@ module uart_csr #(
       .OFFSET_ADDRESS       (5'h00),
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk                  (i_clk),
       .i_rst_n                (i_rst_n),
@@ -220,7 +218,7 @@ module uart_csr #(
       .o_register_status      (w_register_status[2+:2]),
       .o_register_read_data   (w_register_read_data[32+:32]),
       .o_register_value       (w_register_value[32+:32]),
-      .i_indirect_index       (w_indirect_index),
+      .i_indirect_match       (w_indirect_match),
       .o_bit_field_valid      (w_bit_field_valid),
       .o_bit_field_read_mask  (w_bit_field_read_mask),
       .o_bit_field_write_mask (w_bit_field_write_mask),
@@ -265,9 +263,9 @@ module uart_csr #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    wire w_indirect_index;
+    wire w_indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h0000000f, w_bit_field_read_data, w_bit_field_value)
-    assign w_indirect_index = {w_register_value[167+:1]};
+    assign w_indirect_match = w_register_value[167+:1] == 1'h0;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -275,8 +273,7 @@ module uart_csr #(
       .OFFSET_ADDRESS       (5'h04),
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h0})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk                  (i_clk),
       .i_rst_n                (i_rst_n),
@@ -290,7 +287,7 @@ module uart_csr #(
       .o_register_status      (w_register_status[4+:2]),
       .o_register_read_data   (w_register_read_data[64+:32]),
       .o_register_value       (w_register_value[64+:32]),
-      .i_indirect_index       (w_indirect_index),
+      .i_indirect_match       (w_indirect_match),
       .o_bit_field_valid      (w_bit_field_valid),
       .o_bit_field_read_mask  (w_bit_field_read_mask),
       .o_bit_field_write_mask (w_bit_field_write_mask),
@@ -1661,9 +1658,9 @@ module uart_csr #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    wire w_indirect_index;
+    wire w_indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, w_bit_field_read_data, w_bit_field_value)
-    assign w_indirect_index = {w_register_value[167+:1]};
+    assign w_indirect_match = w_register_value[167+:1] == 1'h1;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -1671,8 +1668,7 @@ module uart_csr #(
       .OFFSET_ADDRESS       (5'h00),
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h1})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk                  (i_clk),
       .i_rst_n                (i_rst_n),
@@ -1686,7 +1682,7 @@ module uart_csr #(
       .o_register_status      (w_register_status[20+:2]),
       .o_register_read_data   (w_register_read_data[320+:32]),
       .o_register_value       (w_register_value[320+:32]),
-      .i_indirect_index       (w_indirect_index),
+      .i_indirect_match       (w_indirect_match),
       .o_bit_field_valid      (w_bit_field_valid),
       .o_bit_field_read_mask  (w_bit_field_read_mask),
       .o_bit_field_write_mask (w_bit_field_write_mask),
@@ -1730,9 +1726,9 @@ module uart_csr #(
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
-    wire w_indirect_index;
+    wire w_indirect_match;
     `rggen_tie_off_unused_signals(32, 32'h000000ff, w_bit_field_read_data, w_bit_field_value)
-    assign w_indirect_index = {w_register_value[167+:1]};
+    assign w_indirect_match = w_register_value[167+:1] == 1'h1;
     rggen_indirect_register #(
       .READABLE             (1),
       .WRITABLE             (1),
@@ -1740,8 +1736,7 @@ module uart_csr #(
       .OFFSET_ADDRESS       (5'h04),
       .BUS_WIDTH            (32),
       .DATA_WIDTH           (32),
-      .INDIRECT_INDEX_WIDTH (1),
-      .INDIRECT_INDEX_VALUE ({1'h1})
+      .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
       .i_clk                  (i_clk),
       .i_rst_n                (i_rst_n),
@@ -1755,7 +1750,7 @@ module uart_csr #(
       .o_register_status      (w_register_status[22+:2]),
       .o_register_read_data   (w_register_read_data[352+:32]),
       .o_register_value       (w_register_value[352+:32]),
-      .i_indirect_index       (w_indirect_index),
+      .i_indirect_match       (w_indirect_match),
       .o_bit_field_valid      (w_bit_field_valid),
       .o_bit_field_read_mask  (w_bit_field_read_mask),
       .o_bit_field_write_mask (w_bit_field_write_mask),
