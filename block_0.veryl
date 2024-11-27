@@ -1,4 +1,4 @@
-import rggen_rtl_pkg::*;
+import rggen::rggen_rtl_pkg::*;
 pub module block_0 #(
   param ADDRESS_WIDTH: u32 = 8,
   param PRE_DECODE: bit = 0,
@@ -11,7 +11,7 @@ pub module block_0 #(
 )(
   i_clk: input clock,
   i_rst: input reset,
-  apb_if: modport rggen_apb_if::slave,
+  apb_if: modport rggen::rggen_apb_if::slave,
   o_register_0_bit_field_0: output logic<4>,
   o_register_0_bit_field_1: output logic<4>,
   o_register_0_bit_field_2: output logic,
@@ -126,10 +126,10 @@ pub module block_0 #(
   i_register_13_bit_field_8_hw_write_data: input logic<2>,
   i_register_14_bit_field_0: input logic,
   o_register_15_bit_field_0: output logic,
-  register_17_bus_if: modport rggen_bus_if::master
+  register_17_bus_if: modport rggen::rggen_bus_if::master
 ){
-  inst register_if: rggen_register_if[27]#(ADDRESS_WIDTH: 8, BUS_WIDTH: 32, VALUE_WIDTH: 64);
-  inst u_adapter: rggen_apb_adapter #(
+  inst register_if: rggen::rggen_register_if[27]#(ADDRESS_WIDTH: 8, BUS_WIDTH: 32, VALUE_WIDTH: 64);
+  inst u_adapter: rggen::rggen_apb_adapter #(
     ADDRESS_WIDTH:        ADDRESS_WIDTH,
     LOCAL_ADDRESS_WIDTH:  8,
     BUS_WIDTH:            32,
@@ -147,8 +147,8 @@ pub module block_0 #(
     register_if:  register_if
   );
   :g_register_0 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -165,7 +165,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -174,7 +174,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          4,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -198,7 +198,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:4];
@@ -207,7 +207,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          4,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -231,7 +231,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit = 1'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:1];
@@ -240,7 +240,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -264,7 +264,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[9+:2];
@@ -273,7 +273,7 @@ pub module block_0 #(
         bit_field_if.read_data[9+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[9+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  1,
@@ -297,7 +297,7 @@ pub module block_0 #(
     }
     :g_bit_field_4 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[11+:2];
@@ -306,7 +306,7 @@ pub module block_0 #(
         bit_field_if.read_data[11+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[11+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_CLEAR
@@ -329,7 +329,7 @@ pub module block_0 #(
     }
     :g_bit_field_5 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[13+:2];
@@ -338,7 +338,7 @@ pub module block_0 #(
         bit_field_if.read_data[13+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[13+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_SET
@@ -361,7 +361,7 @@ pub module block_0 #(
     }
     :g_bit_field_6 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[15+:2];
@@ -370,7 +370,7 @@ pub module block_0 #(
         bit_field_if.read_data[15+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[15+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         EXTERNAL_READ_DATA: 1,
@@ -394,8 +394,8 @@ pub module block_0 #(
     }
   }
   :g_register_1 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -412,7 +412,7 @@ pub module block_0 #(
     );
     :g_register_1 {
       const INITIAL_VALUE: bit = 1'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:1];
@@ -421,7 +421,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -445,8 +445,8 @@ pub module block_0 #(
     }
   }
   :g_register_2 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       0,
       ADDRESS_WIDTH:  8,
@@ -462,7 +462,7 @@ pub module block_0 #(
       bit_field_if: bit_field_if
     );
     :g_bit_field_0 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -471,7 +471,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              4,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -495,7 +495,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<8> = 8'hab;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 8);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 8);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:8];
@@ -504,7 +504,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:8] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:8] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              8,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1
@@ -527,7 +527,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -536,7 +536,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_WRITE_ACTION:  rggen_sw_action::WRITE_NONE
@@ -559,7 +559,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[20+:4];
@@ -568,7 +568,7 @@ pub module block_0 #(
         bit_field_if.read_data[20+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[20+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_WRITE_ACTION:  rggen_sw_action::WRITE_NONE
@@ -591,8 +591,8 @@ pub module block_0 #(
     }
   }
   :g_register_3 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       0,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -609,7 +609,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -618,7 +618,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          4,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
@@ -643,7 +643,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:4];
@@ -652,7 +652,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          4,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
@@ -676,7 +676,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_2 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:4];
@@ -685,7 +685,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field_w01trg #(
+      inst u_bit_field: rggen::rggen_bit_field_w01trg #(
         TRIGGER_VALUE:  1'b0,
         WIDTH:          4
       )(
@@ -697,7 +697,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_3 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -706,7 +706,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field_w01trg #(
+      inst u_bit_field: rggen::rggen_bit_field_w01trg #(
         TRIGGER_VALUE:  1'b1,
         WIDTH:          4
       )(
@@ -719,8 +719,8 @@ pub module block_0 #(
     }
   }
   :g_register_4 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       0,
       ADDRESS_WIDTH:  8,
@@ -737,7 +737,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -746,7 +746,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_CLEAR,
@@ -770,7 +770,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:4];
@@ -779,7 +779,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_CLEAR,
@@ -802,7 +802,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_2 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[12+:4];
@@ -811,7 +811,7 @@ pub module block_0 #(
         bit_field_if.read_data[12+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[12+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              4,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -835,7 +835,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -844,7 +844,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_SET,
@@ -868,8 +868,8 @@ pub module block_0 #(
     }
   }
   :g_register_5 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -886,7 +886,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:2];
@@ -895,7 +895,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         HW_CLEAR_WIDTH: 1
@@ -918,7 +918,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[2+:2];
@@ -927,7 +927,7 @@ pub module block_0 #(
         bit_field_if.read_data[2+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[2+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         HW_CLEAR_WIDTH: 1
@@ -950,7 +950,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:2];
@@ -959,7 +959,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         HW_SET_WIDTH:   1
@@ -982,7 +982,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[6+:2];
@@ -991,7 +991,7 @@ pub module block_0 #(
         bit_field_if.read_data[6+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[6+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         HW_SET_WIDTH:   1
@@ -1014,7 +1014,7 @@ pub module block_0 #(
     }
     :g_bit_field_4 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:2];
@@ -1023,7 +1023,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE
       )(
@@ -1045,7 +1045,7 @@ pub module block_0 #(
     }
     :g_bit_field_5 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[10+:2];
@@ -1054,7 +1054,7 @@ pub module block_0 #(
         bit_field_if.read_data[10+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[10+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE
       )(
@@ -1076,7 +1076,7 @@ pub module block_0 #(
     }
     :g_bit_field_6 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[12+:2];
@@ -1085,7 +1085,7 @@ pub module block_0 #(
         bit_field_if.read_data[12+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[12+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_HIGH
@@ -1108,7 +1108,7 @@ pub module block_0 #(
     }
     :g_bit_field_7 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[14+:2];
@@ -1117,7 +1117,7 @@ pub module block_0 #(
         bit_field_if.read_data[14+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[14+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_HIGH
@@ -1140,7 +1140,7 @@ pub module block_0 #(
     }
     :g_bit_field_8 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:2];
@@ -1149,7 +1149,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_HIGH
@@ -1172,7 +1172,7 @@ pub module block_0 #(
     }
     :g_bit_field_9 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[20+:2];
@@ -1181,7 +1181,7 @@ pub module block_0 #(
         bit_field_if.read_data[20+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[20+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_LOW
@@ -1204,7 +1204,7 @@ pub module block_0 #(
     }
     :g_bit_field_10 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[22+:2];
@@ -1213,7 +1213,7 @@ pub module block_0 #(
         bit_field_if.read_data[22+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[22+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_LOW
@@ -1236,7 +1236,7 @@ pub module block_0 #(
     }
     :g_bit_field_11 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[24+:2];
@@ -1245,7 +1245,7 @@ pub module block_0 #(
         bit_field_if.read_data[24+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[24+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:                    2,
         INITIAL_VALUE:            INITIAL_VALUE,
         SW_WRITE_ENABLE_POLARITY: rggen_polarity::ACTIVE_LOW
@@ -1268,8 +1268,8 @@ pub module block_0 #(
     }
   }
   :g_register_6 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 64);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 64);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -1286,7 +1286,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -1295,7 +1295,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1319,7 +1319,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:4];
@@ -1328,7 +1328,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1351,7 +1351,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_2 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:4];
@@ -1360,7 +1360,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              4,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -1384,7 +1384,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[12+:4];
@@ -1393,7 +1393,7 @@ pub module block_0 #(
         bit_field_if.read_data[12+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[12+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1417,7 +1417,7 @@ pub module block_0 #(
     }
     :g_bit_field_4 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -1426,7 +1426,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1449,7 +1449,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_5 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[20+:4];
@@ -1458,7 +1458,7 @@ pub module block_0 #(
         bit_field_if.read_data[20+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[20+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              4,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -1482,7 +1482,7 @@ pub module block_0 #(
     }
     :g_bit_field_6 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[24+:4];
@@ -1491,7 +1491,7 @@ pub module block_0 #(
         bit_field_if.read_data[24+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[24+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1515,7 +1515,7 @@ pub module block_0 #(
     }
     :g_bit_field_7 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[28+:4];
@@ -1524,7 +1524,7 @@ pub module block_0 #(
         bit_field_if.read_data[28+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[28+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1548,7 +1548,7 @@ pub module block_0 #(
     }
     :g_bit_field_8 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[32+:4];
@@ -1557,7 +1557,7 @@ pub module block_0 #(
         bit_field_if.read_data[32+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[32+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_WRITE_ACTION:  rggen_sw_action::WRITE_0_TOGGLE
@@ -1580,7 +1580,7 @@ pub module block_0 #(
     }
     :g_bit_field_9 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[36+:4];
@@ -1589,7 +1589,7 @@ pub module block_0 #(
         bit_field_if.read_data[36+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[36+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_WRITE_ACTION:  rggen_sw_action::WRITE_1_TOGGLE
@@ -1612,8 +1612,8 @@ pub module block_0 #(
     }
   }
   :g_register_7 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -1630,7 +1630,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -1639,7 +1639,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_SET,
@@ -1663,7 +1663,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:4];
@@ -1672,7 +1672,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_SET,
@@ -1696,7 +1696,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -1705,7 +1705,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_CLEAR,
@@ -1729,7 +1729,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[24+:4];
@@ -1738,7 +1738,7 @@ pub module block_0 #(
         bit_field_if.read_data[24+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[24+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_CLEAR,
@@ -1762,8 +1762,8 @@ pub module block_0 #(
     }
   }
   :g_register_8 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 64);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 64);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -1780,7 +1780,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:4];
@@ -1789,7 +1789,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1813,7 +1813,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:4];
@@ -1822,7 +1822,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_DEFAULT,
@@ -1846,7 +1846,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:4];
@@ -1855,7 +1855,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_NONE,
@@ -1879,7 +1879,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[24+:4];
@@ -1888,7 +1888,7 @@ pub module block_0 #(
         bit_field_if.read_data[24+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[24+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_NONE,
@@ -1912,7 +1912,7 @@ pub module block_0 #(
     }
     :g_bit_field_4 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[32+:4];
@@ -1921,7 +1921,7 @@ pub module block_0 #(
         bit_field_if.read_data[32+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[32+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_SET,
@@ -1945,7 +1945,7 @@ pub module block_0 #(
     }
     :g_bit_field_5 {
       const INITIAL_VALUE: bit<4> = 4'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 4);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 4);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[40+:4];
@@ -1954,7 +1954,7 @@ pub module block_0 #(
         bit_field_if.read_data[40+:4] = bit_field_sub_if.read_data;
         bit_field_if.value[40+:4] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:            4,
         INITIAL_VALUE:    INITIAL_VALUE,
         SW_READ_ACTION:   rggen_sw_action::READ_CLEAR,
@@ -1978,8 +1978,8 @@ pub module block_0 #(
     }
   }
   :g_register_9 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -1996,7 +1996,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:2];
@@ -2005,7 +2005,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -2028,7 +2028,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_1 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[2+:2];
@@ -2037,7 +2037,7 @@ pub module block_0 #(
         bit_field_if.read_data[2+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[2+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -2061,7 +2061,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:2];
@@ -2070,7 +2070,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
@@ -2095,7 +2095,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[6+:2];
@@ -2104,7 +2104,7 @@ pub module block_0 #(
         bit_field_if.read_data[6+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[6+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         EXTERNAL_READ_DATA: 1,
@@ -2127,7 +2127,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_4 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:2];
@@ -2136,7 +2136,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field_w01trg #(
+      inst u_bit_field: rggen::rggen_bit_field_w01trg #(
         TRIGGER_VALUE:  1'b0,
         WIDTH:          2
       )(
@@ -2148,7 +2148,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_5 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[10+:2];
@@ -2157,7 +2157,7 @@ pub module block_0 #(
         bit_field_if.read_data[10+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[10+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field_w01trg #(
+      inst u_bit_field: rggen::rggen_bit_field_w01trg #(
         TRIGGER_VALUE:  1'b1,
         WIDTH:          2
       )(
@@ -2171,8 +2171,8 @@ pub module block_0 #(
   }
   :g_register_10 {
     for i in 0..4 :g {
-      inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-      inst u_register: rggen_default_register #(
+      inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+      inst u_register: rggen::rggen_default_register #(
         READABLE:       1,
         WRITABLE:       1,
         ADDRESS_WIDTH:  8,
@@ -2190,7 +2190,7 @@ pub module block_0 #(
       :g_bit_field_0 {
         for j in 0..4 :g {
           const INITIAL_VALUE: bit<2> = 2'h0;
-          inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+          inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
           always_comb {
             bit_field_sub_if.valid = bit_field_if.valid;
             bit_field_sub_if.read_mask = bit_field_if.read_mask[0+8*j+:2];
@@ -2199,7 +2199,7 @@ pub module block_0 #(
             bit_field_if.read_data[0+8*j+:2] = bit_field_sub_if.read_data;
             bit_field_if.value[0+8*j+:2] = bit_field_sub_if.value;
           }
-          inst u_bit_field: rggen_bit_field #(
+          inst u_bit_field: rggen::rggen_bit_field #(
             WIDTH:          2,
             INITIAL_VALUE:  INITIAL_VALUE,
             SW_WRITE_ONCE:  0,
@@ -2224,7 +2224,7 @@ pub module block_0 #(
       }
       :g_bit_field_1 {
         for j in 0..4 :g {
-          inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+          inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
           always_comb {
             bit_field_sub_if.valid = bit_field_if.valid;
             bit_field_sub_if.read_mask = bit_field_if.read_mask[2+8*j+:2];
@@ -2233,7 +2233,7 @@ pub module block_0 #(
             bit_field_if.read_data[2+8*j+:2] = bit_field_sub_if.read_data;
             bit_field_if.value[2+8*j+:2] = bit_field_sub_if.value;
           }
-          inst u_bit_field: rggen_bit_field #(
+          inst u_bit_field: rggen::rggen_bit_field #(
             WIDTH:          2,
             INITIAL_VALUE:  REGISTER_10_BIT_FIELD_1_INITIAL_VALUE[j],
             SW_WRITE_ONCE:  0,
@@ -2259,7 +2259,7 @@ pub module block_0 #(
       :g_bit_field_2 {
         for j in 0..4 :g {
           const INITIAL_VALUE: bit<4, 2> = {2'h3, 2'h2, 2'h1, 2'h0};
-          inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+          inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
           always_comb {
             bit_field_sub_if.valid = bit_field_if.valid;
             bit_field_sub_if.read_mask = bit_field_if.read_mask[4+8*j+:2];
@@ -2268,7 +2268,7 @@ pub module block_0 #(
             bit_field_if.read_data[4+8*j+:2] = bit_field_sub_if.read_data;
             bit_field_if.value[4+8*j+:2] = bit_field_sub_if.value;
           }
-          inst u_bit_field: rggen_bit_field #(
+          inst u_bit_field: rggen::rggen_bit_field #(
             WIDTH:          2,
             INITIAL_VALUE:  INITIAL_VALUE[j],
             SW_WRITE_ONCE:  0,
@@ -2296,12 +2296,12 @@ pub module block_0 #(
   :g_register_11 {
     for i in 0..2 :g {
       for j in 0..4 :g {
-        inst bit_field_if: rggen_bit_field_if#(WIDTH: 64);
+        inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 64);
         var indirect_match: logic<3>;
         assign indirect_match[0] = register_if[0].value[0+:4] == (i as 4);
         assign indirect_match[1] = register_if[0].value[4+:4] == (j as 4);
         assign indirect_match[2] = register_if[0].value[8+:1] == 1'h0;
-        inst u_register: rggen_indirect_register #(
+        inst u_register: rggen::rggen_indirect_register #(
           READABLE:             1,
           WRITABLE:             1,
           ADDRESS_WIDTH:        8,
@@ -2321,7 +2321,7 @@ pub module block_0 #(
         :g_bit_field_0 {
           for k in 0..4 :g {
             const INITIAL_VALUE: bit<8> = 8'h00;
-            inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 8);
+            inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 8);
             always_comb {
               bit_field_sub_if.valid = bit_field_if.valid;
               bit_field_sub_if.read_mask = bit_field_if.read_mask[0+16*k+:8];
@@ -2330,7 +2330,7 @@ pub module block_0 #(
               bit_field_if.read_data[0+16*k+:8] = bit_field_sub_if.read_data;
               bit_field_if.value[0+16*k+:8] = bit_field_sub_if.value;
             }
-            inst u_bit_field: rggen_bit_field #(
+            inst u_bit_field: rggen::rggen_bit_field #(
               WIDTH:          8,
               INITIAL_VALUE:  INITIAL_VALUE,
               SW_WRITE_ONCE:  0,
@@ -2356,7 +2356,7 @@ pub module block_0 #(
         :g_bit_field_1 {
           for k in 0..4 :g {
             const INITIAL_VALUE: bit<8> = 8'h00;
-            inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 8);
+            inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 8);
             always_comb {
               bit_field_sub_if.valid = bit_field_if.valid;
               bit_field_sub_if.read_mask = bit_field_if.read_mask[8+16*k+:8];
@@ -2365,7 +2365,7 @@ pub module block_0 #(
               bit_field_if.read_data[8+16*k+:8] = bit_field_sub_if.read_data;
               bit_field_if.value[8+16*k+:8] = bit_field_sub_if.value;
             }
-            inst u_bit_field: rggen_bit_field #(
+            inst u_bit_field: rggen::rggen_bit_field #(
               WIDTH:          8,
               INITIAL_VALUE:  INITIAL_VALUE,
               SW_WRITE_ONCE:  0,
@@ -2392,10 +2392,10 @@ pub module block_0 #(
     }
   }
   :g_register_12 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 64);
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 64);
     var indirect_match: logic;
     assign indirect_match = register_if[0].value[8+:1] == 1'h1;
-    inst u_register: rggen_indirect_register #(
+    inst u_register: rggen::rggen_indirect_register #(
       READABLE:             1,
       WRITABLE:             1,
       ADDRESS_WIDTH:        8,
@@ -2414,7 +2414,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit = 1'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:1];
@@ -2423,7 +2423,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -2447,7 +2447,7 @@ pub module block_0 #(
     }
     :g_bit_field_1 {
       const INITIAL_VALUE: bit = 1'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[32+:1];
@@ -2456,7 +2456,7 @@ pub module block_0 #(
         bit_field_if.read_data[32+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[32+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_WRITE_ONCE:  0,
@@ -2480,8 +2480,8 @@ pub module block_0 #(
     }
   }
   :g_register_13 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -2498,7 +2498,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:2];
@@ -2507,7 +2507,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2534,7 +2534,7 @@ pub module block_0 #(
       );
     }
     :g_bit_field_1 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[2+:2];
@@ -2543,7 +2543,7 @@ pub module block_0 #(
         bit_field_if.read_data[2+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[2+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      '0,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2571,7 +2571,7 @@ pub module block_0 #(
     }
     :g_bit_field_2 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[4+:2];
@@ -2580,7 +2580,7 @@ pub module block_0 #(
         bit_field_if.read_data[4+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[4+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2608,7 +2608,7 @@ pub module block_0 #(
     }
     :g_bit_field_3 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[6+:2];
@@ -2617,7 +2617,7 @@ pub module block_0 #(
         bit_field_if.read_data[6+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[6+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2645,7 +2645,7 @@ pub module block_0 #(
     }
     :g_bit_field_4 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[8+:2];
@@ -2654,7 +2654,7 @@ pub module block_0 #(
         bit_field_if.read_data[8+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[8+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_CLEAR,
@@ -2682,7 +2682,7 @@ pub module block_0 #(
     }
     :g_bit_field_5 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[10+:2];
@@ -2691,7 +2691,7 @@ pub module block_0 #(
         bit_field_if.read_data[10+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[10+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_SET,
@@ -2719,7 +2719,7 @@ pub module block_0 #(
     }
     :g_bit_field_6 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[12+:2];
@@ -2728,7 +2728,7 @@ pub module block_0 #(
         bit_field_if.read_data[12+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[12+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2756,7 +2756,7 @@ pub module block_0 #(
     }
     :g_bit_field_7 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[14+:2];
@@ -2765,7 +2765,7 @@ pub module block_0 #(
         bit_field_if.read_data[14+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[14+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2793,7 +2793,7 @@ pub module block_0 #(
     }
     :g_bit_field_8 {
       const INITIAL_VALUE: bit<2> = 2'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 2);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 2);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[16+:2];
@@ -2802,7 +2802,7 @@ pub module block_0 #(
         bit_field_if.read_data[16+:2] = bit_field_sub_if.read_data;
         bit_field_if.value[16+:2] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              2,
         INITIAL_VALUE:      INITIAL_VALUE,
         SW_READ_ACTION:     rggen_sw_action::READ_DEFAULT,
@@ -2830,8 +2830,8 @@ pub module block_0 #(
     }
   }
   :g_register_14 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -2847,7 +2847,7 @@ pub module block_0 #(
       bit_field_if: bit_field_if
     );
     :g_bit_field_0 {
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:1];
@@ -2856,7 +2856,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
@@ -2880,8 +2880,8 @@ pub module block_0 #(
     }
   }
   :g_register_15 {
-    inst bit_field_if: rggen_bit_field_if#(WIDTH: 32);
-    inst u_register: rggen_default_register #(
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
       READABLE:       1,
       WRITABLE:       1,
       ADDRESS_WIDTH:  8,
@@ -2898,7 +2898,7 @@ pub module block_0 #(
     );
     :g_bit_field_0 {
       const INITIAL_VALUE: bit = 1'h0;
-      inst bit_field_sub_if: rggen_bit_field_if#(WIDTH: 1);
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
         bit_field_sub_if.valid = bit_field_if.valid;
         bit_field_sub_if.read_mask = bit_field_if.read_mask[0+:1];
@@ -2907,7 +2907,7 @@ pub module block_0 #(
         bit_field_if.read_data[0+:1] = bit_field_sub_if.read_data;
         bit_field_if.value[0+:1] = bit_field_sub_if.value;
       }
-      inst u_bit_field: rggen_bit_field #(
+      inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
@@ -2932,7 +2932,7 @@ pub module block_0 #(
     }
   }
   :g_register_17 {
-    inst u_register: rggen_external_register #(
+    inst u_register: rggen::rggen_external_register #(
       ADDRESS_WIDTH:  8,
       BUS_WIDTH:      32,
       VALUE_WIDTH:    64,
