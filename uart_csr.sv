@@ -60,7 +60,7 @@ module uart_csr
   output logic o_mrc_rts,
   output logic o_mrc_out1,
   output logic o_mrc_out2,
-  output logic o_mrc_loop,
+  output logic o_mrc_loop_back,
   input logic i_lsr_dr,
   input logic i_lsr_oe,
   output logic o_lsr_oe_read_trigger,
@@ -846,7 +846,7 @@ module uart_csr
         .o_value_unmasked   ()
       );
     end
-    if (1) begin : g_loop
+    if (1) begin : g_loop_back
       localparam bit INITIAL_VALUE = 1'h0;
       rggen_bit_field_if #(1) bit_field_sub_if();
       `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 4, 1)
@@ -868,7 +868,7 @@ module uart_csr
         .i_hw_clear         ('0),
         .i_value            ('0),
         .i_mask             ('1),
-        .o_value            (o_mrc_loop),
+        .o_value            (o_mrc_loop_back),
         .o_value_unmasked   ()
       );
     end

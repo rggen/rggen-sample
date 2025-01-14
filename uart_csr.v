@@ -47,7 +47,7 @@ module uart_csr #(
   output o_mrc_rts,
   output o_mrc_out1,
   output o_mrc_out2,
-  output o_mrc_loop,
+  output o_mrc_loop_back,
   input i_lsr_dr,
   input i_lsr_oe,
   output o_lsr_oe_read_trigger,
@@ -1038,7 +1038,7 @@ module uart_csr #(
         .o_value_unmasked   ()
       );
     end
-    if (1) begin : g_loop
+    if (1) begin : g_loop_back
       rggen_bit_field #(
         .WIDTH          (1),
         .INITIAL_VALUE  (1'h0),
@@ -1062,7 +1062,7 @@ module uart_csr #(
         .i_hw_clear         ({1{1'b0}}),
         .i_value            ({1{1'b0}}),
         .i_mask             ({1{1'b1}}),
-        .o_value            (o_mrc_loop),
+        .o_value            (o_mrc_loop_back),
         .o_value_unmasked   ()
       );
     end

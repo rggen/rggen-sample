@@ -254,7 +254,7 @@ register_block {
     }
 
     bit_field {
-      name 'loop'; bit_assignment lsb: 4, width: 1; type :rw; initial_value 0
+      name 'loop_back'; bit_assignment lsb: 4, width: 1; type :rw; initial_value 0
       comment <<~'COMMENT'
         Loop Back
         1: Enables loop back

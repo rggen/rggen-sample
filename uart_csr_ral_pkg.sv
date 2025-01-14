@@ -99,7 +99,7 @@ package uart_csr_ral_pkg;
     rand rggen_ral_field rts;
     rand rggen_ral_field out1;
     rand rggen_ral_field out2;
-    rand rggen_ral_field loop;
+    rand rggen_ral_field loop_back;
     function new(string name);
       super.new(name, 32, 0);
     endfunction
@@ -108,7 +108,7 @@ package uart_csr_ral_pkg;
       `rggen_ral_create_field(rts, 1, 1, "RW", 0, 1'h0, 1, -1, "")
       `rggen_ral_create_field(out1, 2, 1, "RW", 0, 1'h0, 1, -1, "")
       `rggen_ral_create_field(out2, 3, 1, "RW", 0, 1'h0, 1, -1, "")
-      `rggen_ral_create_field(loop, 4, 1, "RW", 0, 1'h0, 1, -1, "")
+      `rggen_ral_create_field(loop_back, 4, 1, "RW", 0, 1'h0, 1, -1, "")
     endfunction
   endclass
   class lsr_reg_model extends rggen_ral_reg;

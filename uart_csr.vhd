@@ -53,7 +53,7 @@ entity uart_csr is
     o_mrc_rts: out std_logic_vector(0 downto 0);
     o_mrc_out1: out std_logic_vector(0 downto 0);
     o_mrc_out2: out std_logic_vector(0 downto 0);
-    o_mrc_loop: out std_logic_vector(0 downto 0);
+    o_mrc_loop_back: out std_logic_vector(0 downto 0);
     i_lsr_dr: in std_logic_vector(0 downto 0);
     i_lsr_oe: in std_logic_vector(0 downto 0);
     o_lsr_oe_read_trigger: out std_logic_vector(0 downto 0);
@@ -1177,7 +1177,7 @@ begin
           o_value_unmasked  => open
         );
     end block;
-    g_loop: block
+    g_loop_back: block
     begin
       u_bit_field: entity work.rggen_bit_field
         generic map (
@@ -1204,7 +1204,7 @@ begin
           i_hw_clear        => (others => '0'),
           i_value           => (others => '0'),
           i_mask            => (others => '1'),
-          o_value           => o_mrc_loop,
+          o_value           => o_mrc_loop_back,
           o_value_unmasked  => open
         );
     end block;

@@ -38,7 +38,7 @@ pub module uart_csr #(
   o_mrc_rts: output logic,
   o_mrc_out1: output logic,
   o_mrc_out2: output logic,
-  o_mrc_loop: output logic,
+  o_mrc_loop_back: output logic,
   i_lsr_dr: input logic,
   i_lsr_oe: input logic,
   o_lsr_oe_read_trigger: output logic,
@@ -992,7 +992,7 @@ pub module uart_csr #(
         o_value_unmasked:   _
       );
     }
-    :g_loop {
+    :g_loop_back {
       const INITIAL_VALUE: bit = 1'h0;
       inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 1);
       always_comb {
@@ -1021,7 +1021,7 @@ pub module uart_csr #(
         i_hw_clear:         '0,
         i_value:            '0,
         i_mask:             '1,
-        o_value:            o_mrc_loop,
+        o_value:            o_mrc_loop_back,
         o_value_unmasked:   _
       );
     }

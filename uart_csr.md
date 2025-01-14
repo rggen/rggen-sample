@@ -131,7 +131,7 @@
 |rts|[1]|rw|0x0|||Request To Send<br>1: Drives RTSN Low<br>0: Drives RTSN High|
 |out1|[2]|rw|0x0|||User Output 1<br>1: Drives OUT1N Low<br>0: Drives OUT1N High|
 |out2|[3]|rw|0x0|||User Output 2<br>1: Drives OUT1N Low<br>0: Drives OUT1N High|
-|loop|[4]|rw|0x0|||Loop Back<br>1: Enables loop back|
+|loop_back|[4]|rw|0x0|||Loop Back<br>1: Enables loop back|
 
 ### <div id="uart_csr-lsr"></div>lsr
 
