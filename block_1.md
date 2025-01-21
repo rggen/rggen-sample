@@ -2,6 +2,8 @@
 
 * byte_size
     * 128
+* bus_width
+    * 32
 * comment
     * this is block_1.<br>this block includes six registers.
 

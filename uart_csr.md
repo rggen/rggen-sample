@@ -2,6 +2,8 @@
 
 * byte_size
     * 32
+* bus_width
+    * 32
 
 |name|offset_address|
 |:--|:--|
