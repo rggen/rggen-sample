@@ -117,24 +117,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              8,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_rbr_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_rbr,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_rbr_read_trigger,
+        i_value:        i_rbr
       );
     }
   }
@@ -177,20 +169,11 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    o_thr_write_trigger,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_thr,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  o_thr_write_trigger,
+        o_value:          o_thr
       );
     }
   }
@@ -232,20 +215,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_ier_erbfi,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_ier_erbfi
       );
     }
     :g_etbei {
@@ -265,20 +240,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_ier_etbei,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_ier_etbei
       );
     }
     :g_elsi {
@@ -298,20 +265,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_ier_elsi,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_ier_elsi
       );
     }
     :g_edssi {
@@ -331,20 +290,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_ier_edssi,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_ier_edssi
       );
     }
   }
@@ -378,24 +329,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_iir_intpend,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_iir_intpend
       );
     }
     :g_intid2 {
@@ -411,24 +354,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              3,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_iir_intid2,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_iir_intid2
       );
     }
   }
@@ -467,20 +402,11 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_fcr_fifoen,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_value:          o_fcr_fifoen
       );
     }
     :g_rcvr_fifo_reset {
@@ -500,7 +426,6 @@ pub module uart_csr #(
         i_clk:        i_clk,
         i_rst:        i_rst,
         bit_field_if: bit_field_sub_if,
-        i_value:      '0,
         o_trigger:    o_fcr_rcvr_fifo_reset_trigger
       );
     }
@@ -521,7 +446,6 @@ pub module uart_csr #(
         i_clk:        i_clk,
         i_rst:        i_rst,
         bit_field_if: bit_field_sub_if,
-        i_value:      '0,
         o_trigger:    o_fcr_xmit_fifo_reset_trigger
       );
     }
@@ -543,20 +467,11 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_fcr_dma_mode_select,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_value:          o_fcr_dma_mode_select
       );
     }
     :g_rcvr_fifo_trigger_level {
@@ -577,20 +492,11 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_fcr_rcvr_fifo_trigger_level,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_value:          o_fcr_rcvr_fifo_trigger_level
       );
     }
   }
@@ -628,20 +534,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_wls,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_wls
       );
     }
     :g_stb {
@@ -661,20 +559,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_stb,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_stb
       );
     }
     :g_pen {
@@ -694,20 +584,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_pen,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_pen
       );
     }
     :g_eps {
@@ -727,20 +609,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_eps,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_eps
       );
     }
     :g_stick_parity {
@@ -760,20 +634,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_stick_parity,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_stick_parity
       );
     }
     :g_set_break {
@@ -793,20 +659,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_set_break,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_set_break
       );
     }
     :g_dlab {
@@ -826,20 +684,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_lcr_dlab,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_lcr_dlab
       );
     }
   }
@@ -877,20 +727,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_mrc_dtr,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_mrc_dtr
       );
     }
     :g_rts {
@@ -910,20 +752,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_mrc_rts,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_mrc_rts
       );
     }
     :g_out1 {
@@ -943,20 +777,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_mrc_out1,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_mrc_out1
       );
     }
     :g_out2 {
@@ -976,20 +802,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_mrc_out2,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_mrc_out2
       );
     }
     :g_loop_back {
@@ -1009,20 +827,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_mrc_loop_back,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_mrc_loop_back
       );
     }
   }
@@ -1056,24 +866,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_dr,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_lsr_dr
       );
     }
     :g_oe {
@@ -1089,24 +891,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_lsr_oe_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_oe,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_lsr_oe_read_trigger,
+        i_value:        i_lsr_oe
       );
     }
     :g_pe {
@@ -1122,24 +916,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_lsr_pe_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_pe,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_lsr_pe_read_trigger,
+        i_value:        i_lsr_pe
       );
     }
     :g_fe {
@@ -1155,24 +941,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_lsr_fe_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_fe,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_lsr_fe_read_trigger,
+        i_value:        i_lsr_fe
       );
     }
     :g_bi {
@@ -1188,24 +966,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_lsr_bi_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_bi,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_lsr_bi_read_trigger,
+        i_value:        i_lsr_bi
       );
     }
     :g_thre {
@@ -1221,24 +991,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_thre,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_lsr_thre
       );
     }
     :g_temt {
@@ -1254,24 +1016,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_temt,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_lsr_temt
       );
     }
     :g_error_in_rcvr_fifo {
@@ -1287,24 +1041,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_lsr_error_in_rcvr_fifo,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_lsr_error_in_rcvr_fifo
       );
     }
   }
@@ -1338,24 +1084,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_msr_dcts_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_dcts,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_msr_dcts_read_trigger,
+        i_value:        i_msr_dcts
       );
     }
     :g_ddsr {
@@ -1371,24 +1109,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_msr_ddsr_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_ddsr,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_msr_ddsr_read_trigger,
+        i_value:        i_msr_ddsr
       );
     }
     :g_teri {
@@ -1404,24 +1134,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_teri,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_msr_teri
       );
     }
     :g_ddcd {
@@ -1437,24 +1159,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            1
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     o_msr_ddcd_read_trigger,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_ddcd,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: o_msr_ddcd_read_trigger,
+        i_value:        i_msr_ddcd
       );
     }
     :g_cts {
@@ -1469,24 +1183,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_cts,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_msr_cts
       );
     }
     :g_dsr {
@@ -1501,24 +1207,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_dsr,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_msr_dsr
       );
     }
     :g_ri {
@@ -1533,24 +1231,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_ri,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_msr_ri
       );
     }
     :g_dcd {
@@ -1565,24 +1255,16 @@ pub module uart_csr #(
       }
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
         STORAGE:            0,
         EXTERNAL_READ_DATA: 1,
         TRIGGER:            0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '0,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            i_msr_dcd,
-        i_mask:             '1,
-        o_value:            _,
-        o_value_unmasked:   _
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_msr_dcd
       );
     }
   }
@@ -1620,20 +1302,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_scratch,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_scratch
       );
     }
   }
@@ -1674,20 +1348,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_dll,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_dll
       );
     }
   }
@@ -1728,20 +1394,12 @@ pub module uart_csr #(
         SW_WRITE_ONCE:  0,
         TRIGGER:        0
       )(
-        i_clk:              i_clk,
-        i_rst:              i_rst,
-        bit_field_if:       bit_field_sub_if,
-        o_write_trigger:    _,
-        o_read_trigger:     _,
-        i_sw_write_enable:  '1,
-        i_hw_write_enable:  '0,
-        i_hw_write_data:    '0,
-        i_hw_set:           '0,
-        i_hw_clear:         '0,
-        i_value:            '0,
-        i_mask:             '1,
-        o_value:            o_dlm,
-        o_value_unmasked:   _
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_dlm
       );
     }
   }
