@@ -1864,7 +1864,7 @@ module block_0
       if (1) begin : g_bit_field_2
         genvar j;
         for (j = 0;j < 4;++j) begin : g
-          localparam bit [1:0] INITIAL_VALUE[4] = '{2'h0, 2'h1, 2'h2, 2'h3};
+          localparam bit [3:0][1:0] INITIAL_VALUE = {2'h3, 2'h2, 2'h1, 2'h0};
           rggen_bit_field_if #(2) bit_field_sub_if();
           `rggen_connect_bit_field_if(bit_field_if, bit_field_sub_if, 4+8*j, 2)
           rggen_bit_field #(
