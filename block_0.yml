@@ -118,7 +118,7 @@ register_blocks:
       - <<:
         # bit assignments: [5:4] [13:12] [21:20] [29:28]
         - { name: bit_field_2, bit_assignment: { lsb: 4, width: 2, sequence_size: 4, step: 8 }, type: rw }
-        - initial_value: [0, 1, 2, 3]
+        - initial_value: [[0, 1, 2, 3], [1, 2, 3, 0], [2, 3, 0, 1], [3, 0, 1, 2]]
 
     - name: register_11
       offset_address: 0x50
