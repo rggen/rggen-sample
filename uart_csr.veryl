@@ -1,11 +1,11 @@
 import rggen::rggen_rtl_pkg::*;
 pub module uart_csr #(
   param ADDRESS_WIDTH: u32 = 5,
-  param PRE_DECODE: bit = 0,
+  param PRE_DECODE: bool = false,
   param BASE_ADDRESS: bit<ADDRESS_WIDTH> = '0,
-  param ERROR_STATUS: bit = 0,
+  param ERROR_STATUS: bool = false,
   param DEFAULT_READ_DATA: bit<32> = '0,
-  param INSERT_SLICER: bit = 0,
+  param INSERT_SLICER: bool = false,
   param DLL_INITIAL_VALUE: bit<8> = 8'h00,
   param DLM_INITIAL_VALUE: bit<8> = 8'h00
 )(
@@ -89,8 +89,8 @@ pub module uart_csr #(
     var indirect_match: logic;
     assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     inst u_register: rggen::rggen_indirect_register #(
-      READABLE:             1,
-      WRITABLE:             0,
+      READABLE:             true,
+      WRITABLE:             false,
       ADDRESS_WIDTH:        5,
       OFFSET_ADDRESS:       5'h00,
       BUS_WIDTH:            32,
@@ -118,9 +118,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              8,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -135,8 +135,8 @@ pub module uart_csr #(
     var indirect_match: logic;
     assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     inst u_register: rggen::rggen_indirect_register #(
-      READABLE:             0,
-      WRITABLE:             1,
+      READABLE:             false,
+      WRITABLE:             true,
       ADDRESS_WIDTH:        5,
       OFFSET_ADDRESS:       5'h00,
       BUS_WIDTH:            32,
@@ -166,8 +166,8 @@ pub module uart_csr #(
         WIDTH:          8,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        1
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        true
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -182,8 +182,8 @@ pub module uart_csr #(
     var indirect_match: logic;
     assign indirect_match = register_if[5].value[7+:1] == 1'h0;
     inst u_register: rggen::rggen_indirect_register #(
-      READABLE:             1,
-      WRITABLE:             1,
+      READABLE:             true,
+      WRITABLE:             true,
       ADDRESS_WIDTH:        5,
       OFFSET_ADDRESS:       5'h04,
       BUS_WIDTH:            32,
@@ -212,8 +212,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -237,8 +237,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -262,8 +262,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -287,8 +287,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -302,8 +302,8 @@ pub module uart_csr #(
   :g_iir {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       0,
+      READABLE:       true,
+      WRITABLE:       false,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h08,
       BUS_WIDTH:      32,
@@ -330,9 +330,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -355,9 +355,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              3,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -370,8 +370,8 @@ pub module uart_csr #(
   :g_fcr {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       0,
-      WRITABLE:       1,
+      READABLE:       false,
+      WRITABLE:       true,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h08,
       BUS_WIDTH:      32,
@@ -399,8 +399,8 @@ pub module uart_csr #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -464,8 +464,8 @@ pub module uart_csr #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -489,8 +489,8 @@ pub module uart_csr #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
         SW_READ_ACTION: rggen_sw_action::READ_NONE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -503,8 +503,8 @@ pub module uart_csr #(
   :g_lcr {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       1,
+      READABLE:       true,
+      WRITABLE:       true,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h0c,
       BUS_WIDTH:      32,
@@ -531,8 +531,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          2,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -556,8 +556,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -581,8 +581,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -606,8 +606,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -631,8 +631,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -656,8 +656,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -681,8 +681,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -696,8 +696,8 @@ pub module uart_csr #(
   :g_mrc {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       1,
+      READABLE:       true,
+      WRITABLE:       true,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h10,
       BUS_WIDTH:      32,
@@ -724,8 +724,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -749,8 +749,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -774,8 +774,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -799,8 +799,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -824,8 +824,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          1,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -839,8 +839,8 @@ pub module uart_csr #(
   :g_lsr {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       0,
+      READABLE:       true,
+      WRITABLE:       false,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h14,
       BUS_WIDTH:      32,
@@ -867,9 +867,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -892,9 +892,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -917,9 +917,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -942,9 +942,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -967,9 +967,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -992,9 +992,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1017,9 +1017,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1042,9 +1042,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1057,8 +1057,8 @@ pub module uart_csr #(
   :g_msr {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       0,
+      READABLE:       true,
+      WRITABLE:       false,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h18,
       BUS_WIDTH:      32,
@@ -1085,9 +1085,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1110,9 +1110,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1135,9 +1135,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1160,9 +1160,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            1
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            true
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1184,9 +1184,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1208,9 +1208,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1232,9 +1232,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1256,9 +1256,9 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:              1,
         SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
-        STORAGE:            0,
-        EXTERNAL_READ_DATA: 1,
-        TRIGGER:            0
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
       )(
         i_clk:          i_clk,
         i_rst:          i_rst,
@@ -1271,8 +1271,8 @@ pub module uart_csr #(
   :g_scratch {
     inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
     inst u_register: rggen::rggen_default_register #(
-      READABLE:       1,
-      WRITABLE:       1,
+      READABLE:       true,
+      WRITABLE:       true,
       ADDRESS_WIDTH:  5,
       OFFSET_ADDRESS: 5'h1c,
       BUS_WIDTH:      32,
@@ -1299,8 +1299,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          8,
         INITIAL_VALUE:  INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -1316,8 +1316,8 @@ pub module uart_csr #(
     var indirect_match: logic;
     assign indirect_match = register_if[5].value[7+:1] == 1'h1;
     inst u_register: rggen::rggen_indirect_register #(
-      READABLE:             1,
-      WRITABLE:             1,
+      READABLE:             true,
+      WRITABLE:             true,
       ADDRESS_WIDTH:        5,
       OFFSET_ADDRESS:       5'h00,
       BUS_WIDTH:            32,
@@ -1345,8 +1345,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          8,
         INITIAL_VALUE:  DLL_INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
@@ -1362,8 +1362,8 @@ pub module uart_csr #(
     var indirect_match: logic;
     assign indirect_match = register_if[5].value[7+:1] == 1'h1;
     inst u_register: rggen::rggen_indirect_register #(
-      READABLE:             1,
-      WRITABLE:             1,
+      READABLE:             true,
+      WRITABLE:             true,
       ADDRESS_WIDTH:        5,
       OFFSET_ADDRESS:       5'h04,
       BUS_WIDTH:            32,
@@ -1391,8 +1391,8 @@ pub module uart_csr #(
       inst u_bit_field: rggen::rggen_bit_field #(
         WIDTH:          8,
         INITIAL_VALUE:  DLM_INITIAL_VALUE,
-        SW_WRITE_ONCE:  0,
-        TRIGGER:        0
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
       )(
         i_clk:            i_clk,
         i_rst:            i_rst,
