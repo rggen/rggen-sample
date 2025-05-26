@@ -120,9 +120,9 @@ module uart_csr #(
     .i_register_read_data   (w_register_read_data)
   );
   generate if (1) begin : g_rbr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -138,25 +138,25 @@ module uart_csr #(
       .DATA_WIDTH           (32),
       .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[0+:1]),
-      .o_register_ready       (w_register_ready[0+:1]),
-      .o_register_status      (w_register_status[0+:2]),
-      .o_register_read_data   (w_register_read_data[0+:32]),
-      .o_register_value       (w_register_value[0+:32]),
-      .i_indirect_match       (w_indirect_match),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[0+:1]),
+      .o_register_ready         (w_register_ready[0+:1]),
+      .o_register_status        (w_register_status[0+:2]),
+      .o_register_read_data     (w_register_read_data[0+:32]),
+      .o_register_value         (w_register_value[0+:32]),
+      .i_indirect_match         (w_indirect_match),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_rbr
       rggen_bit_field #(
@@ -167,10 +167,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:8]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:8]),
+        .i_sw_mask          (w_bit_field_mask[0+:8]),
         .i_sw_write_data    (w_bit_field_write_data[0+:8]),
         .o_sw_read_data     (w_bit_field_read_data[0+:8]),
         .o_sw_value         (w_bit_field_value[0+:8]),
@@ -188,9 +188,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_thr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -206,25 +206,25 @@ module uart_csr #(
       .DATA_WIDTH           (32),
       .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[1+:1]),
-      .o_register_ready       (w_register_ready[1+:1]),
-      .o_register_status      (w_register_status[2+:2]),
-      .o_register_read_data   (w_register_read_data[32+:32]),
-      .o_register_value       (w_register_value[32+:32]),
-      .i_indirect_match       (w_indirect_match),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[1+:1]),
+      .o_register_ready         (w_register_ready[1+:1]),
+      .o_register_status        (w_register_status[2+:2]),
+      .o_register_read_data     (w_register_read_data[32+:32]),
+      .o_register_value         (w_register_value[32+:32]),
+      .i_indirect_match         (w_indirect_match),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_thr
       rggen_bit_field #(
@@ -236,10 +236,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:8]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:8]),
+        .i_sw_mask          (w_bit_field_mask[0+:8]),
         .i_sw_write_data    (w_bit_field_write_data[0+:8]),
         .o_sw_read_data     (w_bit_field_read_data[0+:8]),
         .o_sw_value         (w_bit_field_value[0+:8]),
@@ -257,9 +257,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_ier
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -275,25 +275,25 @@ module uart_csr #(
       .DATA_WIDTH           (32),
       .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[2+:1]),
-      .o_register_ready       (w_register_ready[2+:1]),
-      .o_register_status      (w_register_status[4+:2]),
-      .o_register_read_data   (w_register_read_data[64+:32]),
-      .o_register_value       (w_register_value[64+:32]),
-      .i_indirect_match       (w_indirect_match),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[2+:1]),
+      .o_register_ready         (w_register_ready[2+:1]),
+      .o_register_status        (w_register_status[4+:2]),
+      .o_register_read_data     (w_register_read_data[64+:32]),
+      .o_register_value         (w_register_value[64+:32]),
+      .i_indirect_match         (w_indirect_match),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_erbfi
       rggen_bit_field #(
@@ -304,10 +304,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -332,10 +332,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:1]),
+        .i_sw_mask          (w_bit_field_mask[1+:1]),
         .i_sw_write_data    (w_bit_field_write_data[1+:1]),
         .o_sw_read_data     (w_bit_field_read_data[1+:1]),
         .o_sw_value         (w_bit_field_value[1+:1]),
@@ -360,10 +360,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -388,10 +388,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -409,9 +409,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_iir
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -424,24 +424,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[3+:1]),
-      .o_register_ready       (w_register_ready[3+:1]),
-      .o_register_status      (w_register_status[6+:2]),
-      .o_register_read_data   (w_register_read_data[96+:32]),
-      .o_register_value       (w_register_value[96+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[3+:1]),
+      .o_register_ready         (w_register_ready[3+:1]),
+      .o_register_status        (w_register_status[6+:2]),
+      .o_register_read_data     (w_register_read_data[96+:32]),
+      .o_register_value         (w_register_value[96+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_intpend
       rggen_bit_field #(
@@ -452,10 +452,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -480,10 +480,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:3]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:3]),
+        .i_sw_mask          (w_bit_field_mask[1+:3]),
         .i_sw_write_data    (w_bit_field_write_data[1+:3]),
         .o_sw_read_data     (w_bit_field_read_data[1+:3]),
         .o_sw_value         (w_bit_field_value[1+:3]),
@@ -501,9 +501,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_fcr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -516,24 +516,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[4+:1]),
-      .o_register_ready       (w_register_ready[4+:1]),
-      .o_register_status      (w_register_status[8+:2]),
-      .o_register_read_data   (w_register_read_data[128+:32]),
-      .o_register_value       (w_register_value[128+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[4+:1]),
+      .o_register_ready         (w_register_ready[4+:1]),
+      .o_register_status        (w_register_status[8+:2]),
+      .o_register_read_data     (w_register_read_data[128+:32]),
+      .o_register_value         (w_register_value[128+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_fifoen
       rggen_bit_field #(
@@ -545,10 +545,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -571,10 +571,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:1]),
+        .i_sw_mask          (w_bit_field_mask[1+:1]),
         .i_sw_write_data    (w_bit_field_write_data[1+:1]),
         .o_sw_read_data     (w_bit_field_read_data[1+:1]),
         .o_sw_value         (w_bit_field_value[1+:1]),
@@ -589,10 +589,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -610,10 +610,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -639,10 +639,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[6+:2]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[6+:2]),
+        .i_sw_mask          (w_bit_field_mask[6+:2]),
         .i_sw_write_data    (w_bit_field_write_data[6+:2]),
         .o_sw_read_data     (w_bit_field_read_data[6+:2]),
         .o_sw_value         (w_bit_field_value[6+:2]),
@@ -660,9 +660,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_lcr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -675,24 +675,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[5+:1]),
-      .o_register_ready       (w_register_ready[5+:1]),
-      .o_register_status      (w_register_status[10+:2]),
-      .o_register_read_data   (w_register_read_data[160+:32]),
-      .o_register_value       (w_register_value[160+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[5+:1]),
+      .o_register_ready         (w_register_ready[5+:1]),
+      .o_register_status        (w_register_status[10+:2]),
+      .o_register_read_data     (w_register_read_data[160+:32]),
+      .o_register_value         (w_register_value[160+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_wls
       rggen_bit_field #(
@@ -703,10 +703,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:2]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:2]),
+        .i_sw_mask          (w_bit_field_mask[0+:2]),
         .i_sw_write_data    (w_bit_field_write_data[0+:2]),
         .o_sw_read_data     (w_bit_field_read_data[0+:2]),
         .o_sw_value         (w_bit_field_value[0+:2]),
@@ -731,10 +731,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -759,10 +759,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -787,10 +787,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[4+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[4+:1]),
+        .i_sw_mask          (w_bit_field_mask[4+:1]),
         .i_sw_write_data    (w_bit_field_write_data[4+:1]),
         .o_sw_read_data     (w_bit_field_read_data[4+:1]),
         .o_sw_value         (w_bit_field_value[4+:1]),
@@ -815,10 +815,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[5+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[5+:1]),
+        .i_sw_mask          (w_bit_field_mask[5+:1]),
         .i_sw_write_data    (w_bit_field_write_data[5+:1]),
         .o_sw_read_data     (w_bit_field_read_data[5+:1]),
         .o_sw_value         (w_bit_field_value[5+:1]),
@@ -843,10 +843,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[6+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[6+:1]),
+        .i_sw_mask          (w_bit_field_mask[6+:1]),
         .i_sw_write_data    (w_bit_field_write_data[6+:1]),
         .o_sw_read_data     (w_bit_field_read_data[6+:1]),
         .o_sw_value         (w_bit_field_value[6+:1]),
@@ -871,10 +871,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[7+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[7+:1]),
+        .i_sw_mask          (w_bit_field_mask[7+:1]),
         .i_sw_write_data    (w_bit_field_write_data[7+:1]),
         .o_sw_read_data     (w_bit_field_read_data[7+:1]),
         .o_sw_value         (w_bit_field_value[7+:1]),
@@ -892,9 +892,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_mrc
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -907,24 +907,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[6+:1]),
-      .o_register_ready       (w_register_ready[6+:1]),
-      .o_register_status      (w_register_status[12+:2]),
-      .o_register_read_data   (w_register_read_data[192+:32]),
-      .o_register_value       (w_register_value[192+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[6+:1]),
+      .o_register_ready         (w_register_ready[6+:1]),
+      .o_register_status        (w_register_status[12+:2]),
+      .o_register_read_data     (w_register_read_data[192+:32]),
+      .o_register_value         (w_register_value[192+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_dtr
       rggen_bit_field #(
@@ -935,10 +935,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -963,10 +963,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:1]),
+        .i_sw_mask          (w_bit_field_mask[1+:1]),
         .i_sw_write_data    (w_bit_field_write_data[1+:1]),
         .o_sw_read_data     (w_bit_field_read_data[1+:1]),
         .o_sw_value         (w_bit_field_value[1+:1]),
@@ -991,10 +991,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -1019,10 +1019,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -1047,10 +1047,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[4+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[4+:1]),
+        .i_sw_mask          (w_bit_field_mask[4+:1]),
         .i_sw_write_data    (w_bit_field_write_data[4+:1]),
         .o_sw_read_data     (w_bit_field_read_data[4+:1]),
         .o_sw_value         (w_bit_field_value[4+:1]),
@@ -1068,9 +1068,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_lsr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -1083,24 +1083,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[7+:1]),
-      .o_register_ready       (w_register_ready[7+:1]),
-      .o_register_status      (w_register_status[14+:2]),
-      .o_register_read_data   (w_register_read_data[224+:32]),
-      .o_register_value       (w_register_value[224+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[7+:1]),
+      .o_register_ready         (w_register_ready[7+:1]),
+      .o_register_status        (w_register_status[14+:2]),
+      .o_register_read_data     (w_register_read_data[224+:32]),
+      .o_register_value         (w_register_value[224+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_dr
       rggen_bit_field #(
@@ -1111,10 +1111,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -1139,10 +1139,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:1]),
+        .i_sw_mask          (w_bit_field_mask[1+:1]),
         .i_sw_write_data    (w_bit_field_write_data[1+:1]),
         .o_sw_read_data     (w_bit_field_read_data[1+:1]),
         .o_sw_value         (w_bit_field_value[1+:1]),
@@ -1167,10 +1167,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -1195,10 +1195,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -1223,10 +1223,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[4+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[4+:1]),
+        .i_sw_mask          (w_bit_field_mask[4+:1]),
         .i_sw_write_data    (w_bit_field_write_data[4+:1]),
         .o_sw_read_data     (w_bit_field_read_data[4+:1]),
         .o_sw_value         (w_bit_field_value[4+:1]),
@@ -1251,10 +1251,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[5+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[5+:1]),
+        .i_sw_mask          (w_bit_field_mask[5+:1]),
         .i_sw_write_data    (w_bit_field_write_data[5+:1]),
         .o_sw_read_data     (w_bit_field_read_data[5+:1]),
         .o_sw_value         (w_bit_field_value[5+:1]),
@@ -1279,10 +1279,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[6+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[6+:1]),
+        .i_sw_mask          (w_bit_field_mask[6+:1]),
         .i_sw_write_data    (w_bit_field_write_data[6+:1]),
         .o_sw_read_data     (w_bit_field_read_data[6+:1]),
         .o_sw_value         (w_bit_field_value[6+:1]),
@@ -1307,10 +1307,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[7+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[7+:1]),
+        .i_sw_mask          (w_bit_field_mask[7+:1]),
         .i_sw_write_data    (w_bit_field_write_data[7+:1]),
         .o_sw_read_data     (w_bit_field_read_data[7+:1]),
         .o_sw_value         (w_bit_field_value[7+:1]),
@@ -1328,9 +1328,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_msr
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -1343,24 +1343,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[8+:1]),
-      .o_register_ready       (w_register_ready[8+:1]),
-      .o_register_status      (w_register_status[16+:2]),
-      .o_register_read_data   (w_register_read_data[256+:32]),
-      .o_register_value       (w_register_value[256+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[8+:1]),
+      .o_register_ready         (w_register_ready[8+:1]),
+      .o_register_status        (w_register_status[16+:2]),
+      .o_register_read_data     (w_register_read_data[256+:32]),
+      .o_register_value         (w_register_value[256+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_dcts
       rggen_bit_field #(
@@ -1371,10 +1371,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:1]),
+        .i_sw_mask          (w_bit_field_mask[0+:1]),
         .i_sw_write_data    (w_bit_field_write_data[0+:1]),
         .o_sw_read_data     (w_bit_field_read_data[0+:1]),
         .o_sw_value         (w_bit_field_value[0+:1]),
@@ -1399,10 +1399,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[1+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[1+:1]),
+        .i_sw_mask          (w_bit_field_mask[1+:1]),
         .i_sw_write_data    (w_bit_field_write_data[1+:1]),
         .o_sw_read_data     (w_bit_field_read_data[1+:1]),
         .o_sw_value         (w_bit_field_value[1+:1]),
@@ -1427,10 +1427,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[2+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[2+:1]),
+        .i_sw_mask          (w_bit_field_mask[2+:1]),
         .i_sw_write_data    (w_bit_field_write_data[2+:1]),
         .o_sw_read_data     (w_bit_field_read_data[2+:1]),
         .o_sw_value         (w_bit_field_value[2+:1]),
@@ -1455,10 +1455,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[3+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[3+:1]),
+        .i_sw_mask          (w_bit_field_mask[3+:1]),
         .i_sw_write_data    (w_bit_field_write_data[3+:1]),
         .o_sw_read_data     (w_bit_field_read_data[3+:1]),
         .o_sw_value         (w_bit_field_value[3+:1]),
@@ -1483,10 +1483,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[4+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[4+:1]),
+        .i_sw_mask          (w_bit_field_mask[4+:1]),
         .i_sw_write_data    (w_bit_field_write_data[4+:1]),
         .o_sw_read_data     (w_bit_field_read_data[4+:1]),
         .o_sw_value         (w_bit_field_value[4+:1]),
@@ -1511,10 +1511,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[5+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[5+:1]),
+        .i_sw_mask          (w_bit_field_mask[5+:1]),
         .i_sw_write_data    (w_bit_field_write_data[5+:1]),
         .o_sw_read_data     (w_bit_field_read_data[5+:1]),
         .o_sw_value         (w_bit_field_value[5+:1]),
@@ -1539,10 +1539,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[6+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[6+:1]),
+        .i_sw_mask          (w_bit_field_mask[6+:1]),
         .i_sw_write_data    (w_bit_field_write_data[6+:1]),
         .o_sw_read_data     (w_bit_field_read_data[6+:1]),
         .o_sw_value         (w_bit_field_value[6+:1]),
@@ -1567,10 +1567,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[7+:1]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b0),
-        .i_sw_write_mask    (w_bit_field_write_mask[7+:1]),
+        .i_sw_mask          (w_bit_field_mask[7+:1]),
         .i_sw_write_data    (w_bit_field_write_data[7+:1]),
         .o_sw_read_data     (w_bit_field_read_data[7+:1]),
         .o_sw_value         (w_bit_field_value[7+:1]),
@@ -1588,9 +1588,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_scratch
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -1603,24 +1603,24 @@ module uart_csr #(
       .BUS_WIDTH      (32),
       .DATA_WIDTH     (32)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[9+:1]),
-      .o_register_ready       (w_register_ready[9+:1]),
-      .o_register_status      (w_register_status[18+:2]),
-      .o_register_read_data   (w_register_read_data[288+:32]),
-      .o_register_value       (w_register_value[288+:32]),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[9+:1]),
+      .o_register_ready         (w_register_ready[9+:1]),
+      .o_register_status        (w_register_status[18+:2]),
+      .o_register_read_data     (w_register_read_data[288+:32]),
+      .o_register_value         (w_register_value[288+:32]),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_scratch
       rggen_bit_field #(
@@ -1631,10 +1631,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:8]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:8]),
+        .i_sw_mask          (w_bit_field_mask[0+:8]),
         .i_sw_write_data    (w_bit_field_write_data[0+:8]),
         .o_sw_read_data     (w_bit_field_read_data[0+:8]),
         .o_sw_value         (w_bit_field_value[0+:8]),
@@ -1652,9 +1652,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_dll
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -1670,25 +1670,25 @@ module uart_csr #(
       .DATA_WIDTH           (32),
       .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[10+:1]),
-      .o_register_ready       (w_register_ready[10+:1]),
-      .o_register_status      (w_register_status[20+:2]),
-      .o_register_read_data   (w_register_read_data[320+:32]),
-      .o_register_value       (w_register_value[320+:32]),
-      .i_indirect_match       (w_indirect_match),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[10+:1]),
+      .o_register_ready         (w_register_ready[10+:1]),
+      .o_register_status        (w_register_status[20+:2]),
+      .o_register_read_data     (w_register_read_data[320+:32]),
+      .o_register_value         (w_register_value[320+:32]),
+      .i_indirect_match         (w_indirect_match),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_dll
       rggen_bit_field #(
@@ -1699,10 +1699,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:8]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:8]),
+        .i_sw_mask          (w_bit_field_mask[0+:8]),
         .i_sw_write_data    (w_bit_field_write_data[0+:8]),
         .o_sw_read_data     (w_bit_field_read_data[0+:8]),
         .o_sw_value         (w_bit_field_value[0+:8]),
@@ -1720,9 +1720,9 @@ module uart_csr #(
     end
   end endgenerate
   generate if (1) begin : g_dlm
-    wire w_bit_field_valid;
-    wire [31:0] w_bit_field_read_mask;
-    wire [31:0] w_bit_field_write_mask;
+    wire w_bit_field_read_valid;
+    wire w_bit_field_write_valid;
+    wire [31:0] w_bit_field_mask;
     wire [31:0] w_bit_field_write_data;
     wire [31:0] w_bit_field_read_data;
     wire [31:0] w_bit_field_value;
@@ -1738,25 +1738,25 @@ module uart_csr #(
       .DATA_WIDTH           (32),
       .INDIRECT_MATCH_WIDTH (1)
     ) u_register (
-      .i_clk                  (i_clk),
-      .i_rst_n                (i_rst_n),
-      .i_register_valid       (w_register_valid),
-      .i_register_access      (w_register_access),
-      .i_register_address     (w_register_address),
-      .i_register_write_data  (w_register_write_data),
-      .i_register_strobe      (w_register_strobe),
-      .o_register_active      (w_register_active[11+:1]),
-      .o_register_ready       (w_register_ready[11+:1]),
-      .o_register_status      (w_register_status[22+:2]),
-      .o_register_read_data   (w_register_read_data[352+:32]),
-      .o_register_value       (w_register_value[352+:32]),
-      .i_indirect_match       (w_indirect_match),
-      .o_bit_field_valid      (w_bit_field_valid),
-      .o_bit_field_read_mask  (w_bit_field_read_mask),
-      .o_bit_field_write_mask (w_bit_field_write_mask),
-      .o_bit_field_write_data (w_bit_field_write_data),
-      .i_bit_field_read_data  (w_bit_field_read_data),
-      .i_bit_field_value      (w_bit_field_value)
+      .i_clk                    (i_clk),
+      .i_rst_n                  (i_rst_n),
+      .i_register_valid         (w_register_valid),
+      .i_register_access        (w_register_access),
+      .i_register_address       (w_register_address),
+      .i_register_write_data    (w_register_write_data),
+      .i_register_strobe        (w_register_strobe),
+      .o_register_active        (w_register_active[11+:1]),
+      .o_register_ready         (w_register_ready[11+:1]),
+      .o_register_status        (w_register_status[22+:2]),
+      .o_register_read_data     (w_register_read_data[352+:32]),
+      .o_register_value         (w_register_value[352+:32]),
+      .i_indirect_match         (w_indirect_match),
+      .o_bit_field_read_valid   (w_bit_field_read_valid),
+      .o_bit_field_write_valid  (w_bit_field_write_valid),
+      .o_bit_field_mask         (w_bit_field_mask),
+      .o_bit_field_write_data   (w_bit_field_write_data),
+      .i_bit_field_read_data    (w_bit_field_read_data),
+      .i_bit_field_value        (w_bit_field_value)
     );
     if (1) begin : g_dlm
       rggen_bit_field #(
@@ -1767,10 +1767,10 @@ module uart_csr #(
       ) u_bit_field (
         .i_clk              (i_clk),
         .i_rst_n            (i_rst_n),
-        .i_sw_valid         (w_bit_field_valid),
-        .i_sw_read_mask     (w_bit_field_read_mask[0+:8]),
+        .i_sw_read_valid    (w_bit_field_read_valid),
+        .i_sw_write_valid   (w_bit_field_write_valid),
         .i_sw_write_enable  (1'b1),
-        .i_sw_write_mask    (w_bit_field_write_mask[0+:8]),
+        .i_sw_mask          (w_bit_field_mask[0+:8]),
         .i_sw_write_data    (w_bit_field_write_data[0+:8]),
         .o_sw_read_data     (w_bit_field_read_data[0+:8]),
         .o_sw_value         (w_bit_field_value[0+:8]),
