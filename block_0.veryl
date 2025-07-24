@@ -1,4 +1,4 @@
-import rggen::rggen_rtl_pkg::*;
+#[fmt(skip)]
 pub module block_0 #(
   param ADDRESS_WIDTH: u32 = 8,
   param PRE_DECODE: bool = false,
@@ -128,6 +128,7 @@ pub module block_0 #(
   o_register_15_bit_field_0: output logic,
   register_17_bus_if: modport rggen::rggen_bus_if::master
 ){
+  import rggen::rggen_rtl_pkg::*;
   inst register_if: rggen::rggen_register_if[27]#(ADDRESS_WIDTH: 8, BUS_WIDTH: 32, VALUE_WIDTH: 64);
   inst u_adapter: rggen::rggen_apb_adapter #(
     ADDRESS_WIDTH:        ADDRESS_WIDTH,
