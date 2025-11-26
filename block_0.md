@@ -18,7 +18,7 @@
 |[register_8](#block_0-register_8)|0x20|
 |[register_9](#block_0-register_9)|0x28|
 |[register_10[4]](#block_0-register_10)|0x30<br>0x38<br>0x40<br>0x48|
-|[register_11[2][4]](#block_0-register_11)|0x50<br>0x50<br>0x50<br>0x50<br>0x50<br>0x50<br>0x50<br>0x50|
+|[register_11[2][4]](#block_0-register_11)|0x50|
 |[register_12](#block_0-register_12)|0x50|
 |[register_13](#block_0-register_13)|0x60|
 |[register_14](#block_0-register_14)|0x70|
@@ -205,18 +205,11 @@
 
 * offset_address
     * 0x50
-    * 0x50
-    * 0x50
-    * 0x50
-    * 0x50
-    * 0x50
-    * 0x50
-    * 0x50
 * type
     * indirect
 * index_bit_fields
-    * register_0.bit_field_0
-    * register_0.bit_field_1
+    * register_0.bit_field_0: [0-1]
+    * register_0.bit_field_1: [0-3]
     * register_0.bit_field_2: 0
 
 |name|bit_assignments|type|initial_value|reference|labels|comment|
