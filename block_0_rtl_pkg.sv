@@ -279,7 +279,13 @@ package block_0_rtl_pkg;
   localparam int REGISTER_15_BIT_FIELD_0_BIT_WIDTH = 1;
   localparam bit REGISTER_15_BIT_FIELD_0_BIT_MASK = 1'h1;
   localparam int REGISTER_15_BIT_FIELD_0_BIT_OFFSET = 0;
-  localparam int REGISTER_17_BYTE_WIDTH = 4;
-  localparam int REGISTER_17_BYTE_SIZE = 128;
-  localparam bit [7:0] REGISTER_17_BYTE_OFFSET = 8'h80;
+  localparam int REGISTER_16_BYTE_WIDTH = 4;
+  localparam int REGISTER_16_BYTE_SIZE = 4;
+  localparam bit [7:0] REGISTER_16_BYTE_OFFSET = 8'h78;
+  localparam int REGISTER_16_BIT_FIELD_0_BIT_WIDTH = 16;
+  localparam bit [15:0] REGISTER_16_BIT_FIELD_0_BIT_MASK = 16'hffff;
+  localparam int REGISTER_16_BIT_FIELD_0_BIT_OFFSET = 0;
+  localparam int REGISTER_18_BYTE_WIDTH = 4;
+  localparam int REGISTER_18_BYTE_SIZE = 128;
+  localparam bit [7:0] REGISTER_18_BYTE_OFFSET = 8'h80;
 endpackage

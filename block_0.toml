@@ -464,10 +464,20 @@ initial_value   = 0
 [[register_blocks.registers]]
 name            = 'register_16'
 offset_address  = 0x78
-type            = 'reserved'
+type            = 'maskable'
+[[register_blocks.registers.bit_fields]]
+name            = 'bit_field_0'
+bit_assignment  = { width = 16 }
+type            = 'rw'
+initial_value   = 0
 
 [[register_blocks.registers]]
 name            = 'register_17'
+offset_address  = 0x7C
+type            = 'reserved'
+
+[[register_blocks.registers]]
+name            = 'register_18'
 offset_address  = 0x80
 size            = 32
 type            = 'external'

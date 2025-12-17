@@ -199,11 +199,18 @@ register_block {
   register {
     name 'register_16'
     offset_address 0x78
-    type :reserved
+    type :maskable
+    bit_field { name 'bit_field_0'; bit_assignment width: 16; type :rw; initial_value 0 }
   }
 
   register {
     name 'register_17'
+    offset_address 0x7C
+    type :reserved
+  }
+
+  register {
+    name 'register_18'
     offset_address 0x80
     size 32
     type :external
