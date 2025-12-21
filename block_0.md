@@ -21,11 +21,12 @@
 |[register_11[2][4]](#block_0-register_11)|0x50|
 |[register_12](#block_0-register_12)|0x50|
 |[register_13](#block_0-register_13)|0x60|
-|[register_14](#block_0-register_14)|0x70|
-|[register_15](#block_0-register_15)|0x74|
-|[register_16](#block_0-register_16)|0x78|
-|[register_17](#block_0-register_17)|0x7c|
-|[register_18](#block_0-register_18)|0x80|
+|[register_14](#block_0-register_14)|0x64|
+|[register_15](#block_0-register_15)|0x70|
+|[register_16](#block_0-register_16)|0x74|
+|[register_17](#block_0-register_17)|0x78|
+|[register_18](#block_0-register_18)|0x7c|
+|[register_19](#block_0-register_19)|0x80|
 
 ### <div id="block_0-register_0"></div>register_0
 
@@ -254,6 +255,18 @@
 ### <div id="block_0-register_14"></div>register_14
 
 * offset_address
+    * 0x64
+* type
+    * default
+
+|name|bit_assignments|type|initial_value|reference|labels|comment|
+|:--|:--|:--|:--|:--|:--|:--|
+|bit_field_0|[7:0]|counter|0x00||||
+|bit_field_1|[15:8]|counter|0x00|register_3.bit_field_3|||
+
+### <div id="block_0-register_15"></div>register_15
+
+* offset_address
     * 0x70
 * type
     * rw
@@ -262,7 +275,7 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[0]|ro|||||
 
-### <div id="block_0-register_15"></div>register_15
+### <div id="block_0-register_16"></div>register_16
 
 * offset_address
     * 0x74
@@ -273,7 +286,7 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[0]|wo|0x0||||
 
-### <div id="block_0-register_16"></div>register_16
+### <div id="block_0-register_17"></div>register_17
 
 * offset_address
     * 0x78
@@ -284,14 +297,14 @@
 |:--|:--|:--|:--|:--|:--|:--|
 |bit_field_0|[15:0]|rw|0x0000||||
 
-### <div id="block_0-register_17"></div>register_17
+### <div id="block_0-register_18"></div>register_18
 
 * offset_address
     * 0x7c
 * type
     * reserved
 
-### <div id="block_0-register_18"></div>register_18
+### <div id="block_0-register_19"></div>register_19
 
 * offset_address
     * 0x80

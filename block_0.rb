@@ -182,35 +182,42 @@ register_block {
     bit_field { name 'bit_field_8'; bit_assignment width: 2; initial_value 0; type [:custom, hw_write: true                         ] }
   }
 
-  register {
+  register do
     name 'register_14'
+    offset_address 0x64
+    bit_field { name 'bit_field_0'; bit_assignment width: 8; type :counter; initial_value 0 }
+    bit_field { name 'bit_field_1'; bit_assignment width: 8; type :counter; initial_value 0; reference 'register_3.bit_field_3' }
+  end
+
+  register {
+    name 'register_15'
     offset_address 0x70
     type :rw
     bit_field { name 'bit_field_0'; bit_assignment width: 1; type :ro }
   }
 
   register {
-    name 'register_15'
+    name 'register_16'
     offset_address 0x74
     type :rw
     bit_field { name 'bit_field_0'; bit_assignment width: 1; type :wo; initial_value 0 }
   }
 
   register {
-    name 'register_16'
+    name 'register_17'
     offset_address 0x78
     type :maskable
     bit_field { name 'bit_field_0'; bit_assignment width: 16; type :rw; initial_value 0 }
   }
 
   register {
-    name 'register_17'
+    name 'register_18'
     offset_address 0x7C
     type :reserved
   }
 
   register {
-    name 'register_18'
+    name 'register_19'
     offset_address 0x80
     size 32
     type :external

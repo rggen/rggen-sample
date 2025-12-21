@@ -443,7 +443,22 @@ initial_value   = 0
 type            = ['custom', { hw_write = true }]
 
 [[register_blocks.registers]]
-name            = 'register_14'
+name           = "register_14"
+offset_address = 0x64
+[[register_blocks.registers.bit_fields]]
+name            = "bit_field_0"
+bit_assignment  = { width = 8 }
+type            = 'counter'
+initial_value   = 0
+[[register_blocks.registers.bit_fields]]
+name            = "bit_field_1"
+bit_assignment  = { width = 8 }
+type            = 'counter'
+initial_value   = 0
+reference       = "register_3.bit_field_3"
+
+[[register_blocks.registers]]
+name            = 'register_15'
 offset_address  = 0x70
 type            = 'rw'
 [[register_blocks.registers.bit_fields]]
@@ -452,7 +467,7 @@ bit_assignment  = { width = 1 }
 type            = 'ro'
 
 [[register_blocks.registers]]
-name            = 'register_15'
+name            = 'register_16'
 offset_address  = 0x74
 type            = 'rw'
 [[register_blocks.registers.bit_fields]]
@@ -462,7 +477,7 @@ type            = 'wo'
 initial_value   = 0
 
 [[register_blocks.registers]]
-name            = 'register_16'
+name            = 'register_17'
 offset_address  = 0x78
 type            = 'maskable'
 [[register_blocks.registers.bit_fields]]
@@ -472,12 +487,12 @@ type            = 'rw'
 initial_value   = 0
 
 [[register_blocks.registers]]
-name            = 'register_17'
+name            = 'register_18'
 offset_address  = 0x7C
 type            = 'reserved'
 
 [[register_blocks.registers]]
-name            = 'register_18'
+name            = 'register_19'
 offset_address  = 0x80
 size            = 32
 type            = 'external'
