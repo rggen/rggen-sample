@@ -1,0 +1,31 @@
+addrmap gpio {
+  default precedence = hw;
+
+  name = "GPIO";
+  desc = "Simple general purpose I/O controller";
+
+  // Most fields are software programmable and read by hardware
+  default sw = rw;
+  default hw = r;
+
+  reg {
+    name = "Port Direction";
+    field {
+      desc = "0: input, 1: output";
+      reset = 0x0;
+    } dir[32];
+  } direction;
+
+  reg {
+    name = "Output Data";
+    field { reset = 0x0; } value[32];
+  } data_out;
+
+  reg {
+    name = "Input Data";
+    field {
+      desc = "Value sampled from the pins";
+      sw = r; hw = w;
+    } value[32];
+  } data_in;
+};

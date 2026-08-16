@@ -1,0 +1,165 @@
+#[fmt(skip)]
+#[allow(unassign_variable)]
+pub module gpio #(
+  param ADDRESS_WIDTH: u32 = 4,
+  param PRE_DECODE: bbool = false,
+  param BASE_ADDRESS: bit<ADDRESS_WIDTH> = '0,
+  param ERROR_STATUS: bbool = false,
+  param DEFAULT_READ_DATA: bit<32> = '0,
+  param INSERT_SLICER: bbool = false
+)(
+  i_clk: input clock,
+  i_rst: input reset,
+  apb_if: modport rggen::rggen_apb_if::slave,
+  o_direction_dir: output logic<32>,
+  o_data_out_value: output logic<32>,
+  i_data_in_value: input logic<32>
+){
+  import rggen::rggen_rtl_pkg::*;
+  inst register_if: rggen::rggen_register_if[3]#(ADDRESS_WIDTH: 4, BUS_WIDTH: 32, VALUE_WIDTH: 32);
+  inst u_adapter: rggen::rggen_apb_adapter #(
+    ADDRESS_WIDTH:        ADDRESS_WIDTH,
+    LOCAL_ADDRESS_WIDTH:  4,
+    BUS_WIDTH:            32,
+    REGISTERS:            3,
+    PRE_DECODE:           PRE_DECODE,
+    BASE_ADDRESS:         BASE_ADDRESS,
+    BYTE_SIZE:            12,
+    ERROR_STATUS:         ERROR_STATUS,
+    DEFAULT_READ_DATA:    DEFAULT_READ_DATA,
+    INSERT_SLICER:        INSERT_SLICER
+  )(
+    i_clk:        i_clk,
+    i_rst:        i_rst,
+    apb_if:       apb_if,
+    register_if:  register_if
+  );
+  :g_direction {
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
+      READABLE:       true,
+      WRITABLE:       true,
+      ADDRESS_WIDTH:  4,
+      OFFSET_ADDRESS: 4'h0,
+      BUS_WIDTH:      32,
+      DATA_WIDTH:     32,
+      VALUE_WIDTH:    32,
+      VALID_BITS:     32'hffffffff
+    )(
+      i_clk:        i_clk,
+      i_rst:        i_rst,
+      register_if:  register_if[0],
+      bit_field_if: bit_field_if
+    );
+    :g_dir {
+      const INITIAL_VALUE: bit<32> = 32'h00000000;
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+      always_comb {
+        bit_field_sub_if.read_valid = bit_field_if.read_valid;
+        bit_field_sub_if.write_valid = bit_field_if.write_valid;
+        bit_field_sub_if.mask = bit_field_if.mask[0+:32];
+        bit_field_sub_if.write_data = bit_field_if.write_data[0+:32];
+        bit_field_if.read_data[0+:32] = bit_field_sub_if.read_data;
+        bit_field_if.value[0+:32] = bit_field_sub_if.value;
+      }
+      inst u_bit_field: rggen::rggen_bit_field #(
+        WIDTH:          32,
+        INITIAL_VALUE:  INITIAL_VALUE,
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
+      )(
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_direction_dir
+      );
+    }
+  }
+  :g_data_out {
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
+      READABLE:       true,
+      WRITABLE:       true,
+      ADDRESS_WIDTH:  4,
+      OFFSET_ADDRESS: 4'h4,
+      BUS_WIDTH:      32,
+      DATA_WIDTH:     32,
+      VALUE_WIDTH:    32,
+      VALID_BITS:     32'hffffffff
+    )(
+      i_clk:        i_clk,
+      i_rst:        i_rst,
+      register_if:  register_if[1],
+      bit_field_if: bit_field_if
+    );
+    :g_value {
+      const INITIAL_VALUE: bit<32> = 32'h00000000;
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+      always_comb {
+        bit_field_sub_if.read_valid = bit_field_if.read_valid;
+        bit_field_sub_if.write_valid = bit_field_if.write_valid;
+        bit_field_sub_if.mask = bit_field_if.mask[0+:32];
+        bit_field_sub_if.write_data = bit_field_if.write_data[0+:32];
+        bit_field_if.read_data[0+:32] = bit_field_sub_if.read_data;
+        bit_field_if.value[0+:32] = bit_field_sub_if.value;
+      }
+      inst u_bit_field: rggen::rggen_bit_field #(
+        WIDTH:          32,
+        INITIAL_VALUE:  INITIAL_VALUE,
+        SW_WRITE_ONCE:  false,
+        TRIGGER:        false
+      )(
+        i_clk:            i_clk,
+        i_rst:            i_rst,
+        bit_field_if:     bit_field_sub_if,
+        o_write_trigger:  _,
+        o_read_trigger:   _,
+        o_value:          o_data_out_value
+      );
+    }
+  }
+  :g_data_in {
+    inst bit_field_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+    inst u_register: rggen::rggen_default_register #(
+      READABLE:       true,
+      WRITABLE:       false,
+      ADDRESS_WIDTH:  4,
+      OFFSET_ADDRESS: 4'h8,
+      BUS_WIDTH:      32,
+      DATA_WIDTH:     32,
+      VALUE_WIDTH:    32,
+      VALID_BITS:     32'hffffffff
+    )(
+      i_clk:        i_clk,
+      i_rst:        i_rst,
+      register_if:  register_if[2],
+      bit_field_if: bit_field_if
+    );
+    :g_value {
+      inst bit_field_sub_if: rggen::rggen_bit_field_if#(WIDTH: 32);
+      always_comb {
+        bit_field_sub_if.read_valid = bit_field_if.read_valid;
+        bit_field_sub_if.write_valid = bit_field_if.write_valid;
+        bit_field_sub_if.mask = bit_field_if.mask[0+:32];
+        bit_field_sub_if.write_data = bit_field_if.write_data[0+:32];
+        bit_field_if.read_data[0+:32] = bit_field_sub_if.read_data;
+        bit_field_if.value[0+:32] = bit_field_sub_if.value;
+      }
+      inst u_bit_field: rggen::rggen_bit_field #(
+        WIDTH:              32,
+        SW_WRITE_ACTION:    rggen_sw_action::WRITE_NONE,
+        STORAGE:            false,
+        EXTERNAL_READ_DATA: true,
+        TRIGGER:            false
+      )(
+        i_clk:          i_clk,
+        i_rst:          i_rst,
+        bit_field_if:   bit_field_sub_if,
+        o_read_trigger: _,
+        i_value:        i_data_in_value
+      );
+    }
+  }
+}

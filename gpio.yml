@@ -1,0 +1,38 @@
+- register_block:
+  - name: gpio
+    byte_size: 12
+    comment: |
+      Simple general purpose I/O controller
+
+################################################################
+  - register:
+    - name: direction
+      offset_address: 0x0
+      bit_fields:
+        - name: dir
+          bit_assignment: { lsb: 0, width: 32 }
+          type: rw
+          initial_value: 0
+          comment: |
+            0: input, 1: output
+
+################################################################
+  - register:
+    - name: data_out
+      offset_address: 0x04
+      bit_fields:
+        - name: value
+          bit_assignment: { lsb: 0, width: 32 }
+          type: rw
+          initial_value: 0
+
+################################################################
+  - register:
+    - name: data_in
+      offset_address: 0x08
+      bit_fields:
+        - name: value
+          bit_assignment: { lsb: 0, width: 32 }
+          type: ro
+          comment: |
+            Value sampled from the pins

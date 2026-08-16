@@ -1,0 +1,20 @@
+package gpio_rtl_pkg;
+  localparam int DIRECTION_BYTE_WIDTH = 4;
+  localparam int DIRECTION_BYTE_SIZE = 4;
+  localparam bit [3:0] DIRECTION_BYTE_OFFSET = 4'h0;
+  localparam int DIRECTION_DIR_BIT_WIDTH = 32;
+  localparam bit [31:0] DIRECTION_DIR_BIT_MASK = 32'hffffffff;
+  localparam int DIRECTION_DIR_BIT_OFFSET = 0;
+  localparam int DATA_OUT_BYTE_WIDTH = 4;
+  localparam int DATA_OUT_BYTE_SIZE = 4;
+  localparam bit [3:0] DATA_OUT_BYTE_OFFSET = 4'h4;
+  localparam int DATA_OUT_VALUE_BIT_WIDTH = 32;
+  localparam bit [31:0] DATA_OUT_VALUE_BIT_MASK = 32'hffffffff;
+  localparam int DATA_OUT_VALUE_BIT_OFFSET = 0;
+  localparam int DATA_IN_BYTE_WIDTH = 4;
+  localparam int DATA_IN_BYTE_SIZE = 4;
+  localparam bit [3:0] DATA_IN_BYTE_OFFSET = 4'h8;
+  localparam int DATA_IN_VALUE_BIT_WIDTH = 32;
+  localparam bit [31:0] DATA_IN_VALUE_BIT_MASK = 32'hffffffff;
+  localparam int DATA_IN_VALUE_BIT_OFFSET = 0;
+endpackage

@@ -1,0 +1,27 @@
+#ifndef GPIO_H
+#define GPIO_H
+#include "stdint.h"
+#define GPIO_DIRECTION_DIR_BIT_WIDTH 32
+#define GPIO_DIRECTION_DIR_BIT_MASK 0xffffffff
+#define GPIO_DIRECTION_DIR_BIT_OFFSET 0
+#define GPIO_DIRECTION_BYTE_WIDTH 4
+#define GPIO_DIRECTION_BYTE_SIZE 4
+#define GPIO_DIRECTION_BYTE_OFFSET 0x0
+#define GPIO_DATA_OUT_VALUE_BIT_WIDTH 32
+#define GPIO_DATA_OUT_VALUE_BIT_MASK 0xffffffff
+#define GPIO_DATA_OUT_VALUE_BIT_OFFSET 0
+#define GPIO_DATA_OUT_BYTE_WIDTH 4
+#define GPIO_DATA_OUT_BYTE_SIZE 4
+#define GPIO_DATA_OUT_BYTE_OFFSET 0x4
+#define GPIO_DATA_IN_VALUE_BIT_WIDTH 32
+#define GPIO_DATA_IN_VALUE_BIT_MASK 0xffffffff
+#define GPIO_DATA_IN_VALUE_BIT_OFFSET 0
+#define GPIO_DATA_IN_BYTE_WIDTH 4
+#define GPIO_DATA_IN_BYTE_SIZE 4
+#define GPIO_DATA_IN_BYTE_OFFSET 0x8
+typedef struct {
+  uint32_t direction;
+  uint32_t data_out;
+  uint32_t data_in;
+} gpio_t;
+#endif
